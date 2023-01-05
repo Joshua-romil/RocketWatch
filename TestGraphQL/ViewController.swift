@@ -8,12 +8,85 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var launchTableView: UITableView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var launchViewModel: LaunchViewModel = LaunchViewModel()
+    var webViewController: WebViewController = WebViewController()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        activityIndicator.startAnimating()
+        registerCell()
+        fetchAPI()
+    }
+    
+    private func fetchAPI(){
+        self.loadingView.isHidden = false
+        launchViewModel.delegate = self
+        
+        launchViewModel.fetchLaunchList()
+    }
+    
+    private func registerCell(){
+        self.launchTableView.register(UINib(nibName: "LaunchTableViewCell", bundle: nil), forCellReuseIdentifier: "LaunchTableViewCell")
     }
 
+}
 
+extension ViewController: UITableViewDataSource, UITableViewDelegate{
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "LaunchTableViewCell", for: indexPath) as? LaunchTableViewCell{
+            cell.configureCell(item: launchViewModel.launchList[indexPath.row])
+                    
+            return cell
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let videoLinkFromSelectedCell = launchViewModel.launchList[indexPath.row].links?.videoLink
+        
+        
+        let storyboard = UIStoryboard(name: "WebStoryboard", bundle: nil)
+        let vc = storyboard.instantiateInitialViewController()! as WebViewController
+        vc.videoLink = videoLinkFromSelectedCell!
+        
+        
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return launchViewModel.launchList.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+}
+
+extension ViewController: LaunchViewModelDelegate{
+    
+    func didReceiveData() {
+        self.loadingView.isHidden = true
+        self.activityIndicator.stopAnimating()
+        self.launchTableView.reloadData()
+    }
+    
+    func didFail(errorMessage: String) {
+        self.loadingView.isHidden = true
+        debugPrint(errorMessage)
+    }
+    
+    
 }
 

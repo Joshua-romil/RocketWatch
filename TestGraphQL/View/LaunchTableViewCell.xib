@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LaunchTableViewCell" rowHeight="57" id="KGk-i7-Jjw" customClass="LaunchTableViewCell" customModule="TestGraphQL" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="143"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="143"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sparkle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zpo-J9-Jam">
+                        <rect key="frame" x="8" y="8.5" width="127" height="125.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="zpo-J9-Jam" secondAttribute="height" multiplier="1:1" id="UNZ-UN-awY"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Cfm-fT-ymi">
+                        <rect key="frame" x="135" y="0.0" width="177" height="143"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zq4-j4-JKQ">
+                                <rect key="frame" x="0.0" y="0.0" width="177" height="47.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaZ-89-Ebg">
+                                <rect key="frame" x="0.0" y="47.5" width="177" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5Z-2O-Ocm">
+                                <rect key="frame" x="0.0" y="95.5" width="177" height="47.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Cfm-fT-ymi" secondAttribute="bottom" id="5bS-WH-Ix3"/>
+                    <constraint firstAttribute="trailing" secondItem="Cfm-fT-ymi" secondAttribute="trailing" constant="8" id="8Fo-fp-C3W"/>
+                    <constraint firstItem="zpo-J9-Jam" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Cy2-77-LO3"/>
+                    <constraint firstItem="Cfm-fT-ymi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RuO-Ju-GKF"/>
+                    <constraint firstItem="zpo-J9-Jam" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="U3a-wM-ibZ"/>
+                    <constraint firstAttribute="bottom" secondItem="zpo-J9-Jam" secondAttribute="bottom" constant="8" id="erG-92-tKA"/>
+                    <constraint firstItem="Cfm-fT-ymi" firstAttribute="leading" secondItem="zpo-J9-Jam" secondAttribute="trailing" id="kbK-G6-FDO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="missionLabel" destination="Zq4-j4-JKQ" id="BEL-5a-wco"/>
+                <outlet property="rocketImage" destination="zpo-J9-Jam" id="vfo-GM-KM4"/>
+                <outlet property="rocketLabel" destination="X5Z-2O-Ocm" id="U6Q-Ub-mge"/>
+                <outlet property="siteLabel" destination="uaZ-89-Ebg" id="8Rb-RK-E8P"/>
+            </connections>
+            <point key="canvasLocation" x="-14" y="163"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="sparkle" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
