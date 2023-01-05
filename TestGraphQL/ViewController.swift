@@ -3,7 +3,8 @@
 //  TestGraphQL
 //
 //  Created by Joshua George on 2022-11-30.
-//
+//  The purpose of the app is to learn more about the whole process of publishing and
+//  creating iOS-apps. 
 
 import UIKit
 
