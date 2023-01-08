@@ -12,7 +12,7 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Change to 2 seconds when ready for appstore.
+        //Change to 2 seconds when ready for app store.
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0){
             self.performSegue(withIdentifier: "OpenMain", sender: nil)
         }
