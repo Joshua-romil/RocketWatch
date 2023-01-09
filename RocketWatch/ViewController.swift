@@ -25,6 +25,10 @@ class ViewController: UIViewController {
         fetchAPI()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return UIStatusBarStyle.lightContent
+    }
+    
     private func fetchAPI(){
         self.loadingView.isHidden = false
         launchViewModel.delegate = self
@@ -43,7 +47,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "LaunchTableViewCell", for: indexPath) as? LaunchTableViewCell{
-            cell.configureCell(item: launchViewModel.launchList[indexPath.row])
+            cell.configureCell(item: launchViewModel.launchList[indexPath.section])
                     
             return cell
         }
@@ -62,15 +66,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
         self.present(vc, animated: true, completion: nil)
     }
-    
-    
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return launchViewModel.launchList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 190
     }
     
 }

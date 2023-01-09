@@ -13,6 +13,7 @@ class LaunchTableViewCell: UITableViewCell {
     @IBOutlet weak var siteLabel: UILabel!
     @IBOutlet weak var rocketLabel: UILabel!
     @IBOutlet weak var rocketImage: UIImageView!
+    @IBOutlet weak var containerView: UIView!
     
     public var launchImagesURLs: [URL] = []
     
@@ -27,10 +28,20 @@ class LaunchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //Does not work.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        
+    }
+    
     func configureCell(item: LaunchesQuery.Data.Launch){
         missionLabel.text = item.missionName
         siteLabel.text = item.launchSite?.siteName
         rocketLabel.text = item.rocket?.rocketName
+        
+        //self.contentView.layer.cornerRadius = 8.0
+        //self.contentView.layer.masksToBounds = true
         
         let launchImagesLinks: [String?]? = item.links?.flickrImages
         
