@@ -16,44 +16,63 @@
                 <rect key="frame" x="0.0" y="0.0" width="295.5" height="143"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sparkle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zpo-J9-Jam">
-                        <rect key="frame" x="8" y="8.5" width="127" height="125.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="zpo-J9-Jam" secondAttribute="height" multiplier="1:1" id="UNZ-UN-awY"/>
-                        </constraints>
-                    </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Cfm-fT-ymi">
-                        <rect key="frame" x="135" y="0.0" width="152.5" height="143"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="WWd-br-JSi">
+                        <rect key="frame" x="10" y="10" width="140.5" height="123"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zq4-j4-JKQ">
-                                <rect key="frame" x="0.0" y="0.0" width="152.5" height="47.5"/>
-                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mission name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zq4-j4-JKQ">
+                                <rect key="frame" x="0.0" y="0.0" width="140.5" height="31"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaZ-89-Ebg">
-                                <rect key="frame" x="0.0" y="47.5" width="152.5" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launch site name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaZ-89-Ebg">
+                                <rect key="frame" x="0.0" y="31" width="127.5" height="30.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5Z-2O-Ocm">
-                                <rect key="frame" x="0.0" y="95.5" width="152.5" height="47.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rocket name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5Z-2O-Ocm">
+                                <rect key="frame" x="0.0" y="61.5" width="94.5" height="31"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAR-t1-Pqp">
+                                <rect key="frame" x="0.0" y="92.5" width="44" height="30.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RAV-rt-RR9">
+                        <rect key="frame" x="276" y="0.0" width="19.5" height="143"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K0G-Qw-Isz">
+                                <rect key="frame" x="0.0" y="0.0" width="19.5" height="143"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sparkle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zpo-J9-Jam">
+                                        <rect key="frame" x="0.0" y="0.5" width="19.5" height="141.5"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="K0G-Qw-Isz" secondAttribute="trailing" id="Ta0-Be-BnE"/>
+                            <constraint firstItem="K0G-Qw-Isz" firstAttribute="leading" secondItem="RAV-rt-RR9" secondAttribute="leading" id="ZkF-MW-Lme"/>
+                            <constraint firstAttribute="bottom" secondItem="K0G-Qw-Isz" secondAttribute="bottom" id="gUT-SP-UbV"/>
+                            <constraint firstItem="K0G-Qw-Isz" firstAttribute="top" secondItem="RAV-rt-RR9" secondAttribute="top" id="vI7-6u-p9U"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Cfm-fT-ymi" secondAttribute="bottom" id="5bS-WH-Ix3"/>
-                    <constraint firstAttribute="trailing" secondItem="Cfm-fT-ymi" secondAttribute="trailing" constant="8" id="8Fo-fp-C3W"/>
-                    <constraint firstItem="zpo-J9-Jam" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Cy2-77-LO3"/>
-                    <constraint firstItem="Cfm-fT-ymi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RuO-Ju-GKF"/>
-                    <constraint firstItem="zpo-J9-Jam" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="U3a-wM-ibZ"/>
-                    <constraint firstAttribute="bottom" secondItem="zpo-J9-Jam" secondAttribute="bottom" constant="8" id="erG-92-tKA"/>
-                    <constraint firstItem="Cfm-fT-ymi" firstAttribute="leading" secondItem="zpo-J9-Jam" secondAttribute="trailing" id="kbK-G6-FDO"/>
+                    <constraint firstItem="WWd-br-JSi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="0pl-mQ-NW2"/>
+                    <constraint firstAttribute="trailing" secondItem="RAV-rt-RR9" secondAttribute="trailing" id="2S7-qf-rdf"/>
+                    <constraint firstItem="RAV-rt-RR9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Q5y-Vh-Y54"/>
+                    <constraint firstItem="WWd-br-JSi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Sv6-QB-j1E"/>
+                    <constraint firstAttribute="bottom" secondItem="WWd-br-JSi" secondAttribute="bottom" constant="10" id="Zxj-ul-CSv"/>
+                    <constraint firstAttribute="bottom" secondItem="RAV-rt-RR9" secondAttribute="bottom" id="hPp-jQ-qjB"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -63,7 +82,7 @@
                 <outlet property="rocketLabel" destination="X5Z-2O-Ocm" id="U6Q-Ub-mge"/>
                 <outlet property="siteLabel" destination="uaZ-89-Ebg" id="8Rb-RK-E8P"/>
             </connections>
-            <point key="canvasLocation" x="-14" y="163"/>
+            <point key="canvasLocation" x="32" y="182"/>
         </tableViewCell>
     </objects>
     <resources>
