@@ -36,6 +36,7 @@ class LaunchViewModel{
                 if let launchConnection = graphQLResult.data?.launches{
                     self?.launchList.append(contentsOf: launchConnection.compactMap{$0})
                 }
+                //MOVE THIS TO THE RIGHT PLACE. BUT WHERE?
                 self?.delegate?.didReceiveData()
                 case .failure(let error):
                     debugPrint("Error: \(error)")
