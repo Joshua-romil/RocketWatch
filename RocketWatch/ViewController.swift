@@ -32,7 +32,6 @@ class ViewController: UIViewController {
     private func fetchAPI(){
         self.loadingView.isHidden = false
         launchViewModel.delegate = self
-        
         launchViewModel.fetchLaunchList()
     }
     
@@ -47,8 +46,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "LaunchTableViewCell", for: indexPath) as? LaunchTableViewCell{
-            cell.configureCell(item: launchViewModel.launchList[indexPath.section])
-                    
+            cell.configureCellLabels(item: launchViewModel.launchList[indexPath.section])
+            cell.configureCellImage(item: launchViewModel.launchList[indexPath.section])
             return cell
         }
         return UITableViewCell()
@@ -56,7 +55,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let videoLinkFromSelectedCell = launchViewModel.launchList[indexPath.row].links?.videoLink
+        let videoLinkFromSelectedCell = launchViewModel.launchList[indexPath.section].links?.videoLink
         
         
         let storyboard = UIStoryboard(name: "WebStoryboard", bundle: nil)

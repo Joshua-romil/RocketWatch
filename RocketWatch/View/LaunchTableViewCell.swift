@@ -13,7 +13,6 @@ class LaunchTableViewCell: UITableViewCell {
     @IBOutlet weak var siteLabel: UILabel!
     @IBOutlet weak var rocketLabel: UILabel!
     @IBOutlet weak var rocketImage: UIImageView!
-    @IBOutlet weak var containerView: UIView!
     
     public var launchImagesURLs: [URL] = []
     
@@ -35,27 +34,37 @@ class LaunchTableViewCell: UITableViewCell {
         
     }
     
-    func configureCell(item: LaunchesQuery.Data.Launch){
+    func configureCellLabels(item: LaunchesQuery.Data.Launch){
         missionLabel.text = item.missionName
         siteLabel.text = item.launchSite?.siteName
         rocketLabel.text = item.rocket?.rocketName
-        
-        //self.contentView.layer.cornerRadius = 8.0
-        //self.contentView.layer.masksToBounds = true
+    }
+    
+    func configureCellImage(item: LaunchesQuery.Data.Launch){
         
         let launchImagesLinks: [String?]? = item.links?.flickrImages
-        
-        if launchImagesLinks!.isEmpty{
-            //TODO: Show default image when there are no launch images available
-        } else{
-            //TODO: Show first launch image when there are launch images available
-        }
         
         let launchImagesURLs = launchImagesLinks?.compactMap { urlString -> URL? in
             if let urlString = urlString {
                 return URL(string: urlString)
             } else {
                 return nil
+            }
+        }
+        
+        DispatchQueue.global(qos: .background).async {
+            if launchImagesURLs!.isEmpty{
+                print("Error: Launch is missing image")
+            }else{
+                do{
+                    let data = try Data.init(contentsOf: launchImagesURLs![0])
+                    DispatchQueue.main.async {
+                        self.rocketImage.image = UIImage(data: data)
+                    }
+                }
+                catch{
+                    print("Unexpected error: \(error).")
+                }
             }
         }
         

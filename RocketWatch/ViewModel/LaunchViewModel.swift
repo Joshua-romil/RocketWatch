@@ -37,11 +37,10 @@ class LaunchViewModel{
                     self?.launchList.append(contentsOf: launchConnection.compactMap{$0})
                 }
                 self?.delegate?.didReceiveData()
-            case .failure(let error):
-                debugPrint("Error: \(error)")
-                self?.delegate?.didFail(errorMessage: error.localizedDescription)
-            }
-            
+                case .failure(let error):
+                    debugPrint("Error: \(error)")
+                    self?.delegate?.didFail(errorMessage: error.localizedDescription)
+                }
         }
     }
 }
