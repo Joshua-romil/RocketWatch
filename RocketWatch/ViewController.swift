@@ -14,12 +14,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var mainTabBar: UITabBar!
+    
     var launchViewModel: LaunchViewModel = LaunchViewModel()
     var webViewController: WebViewController = WebViewController()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainTabBar.selectedItem = mainTabBar.items?.first
         activityIndicator.startAnimating()
         registerCell()
         fetchAPI()

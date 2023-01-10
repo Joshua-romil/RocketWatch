@@ -58,7 +58,7 @@
                                             <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </textAttributes>
                                         <items>
-                                            <navigationItem title="Title" id="IaN-au-3Dg"/>
+                                            <navigationItem title="Launches" id="IaN-au-3Dg"/>
                                         </items>
                                     </navigationBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0t-o0-7u6">
@@ -96,7 +96,7 @@
                                         <rect key="frame" x="0.0" y="769" width="398" height="49"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <items>
-                                            <tabBarItem systemItem="favorites" id="jcs-fY-kGK">
+                                            <tabBarItem title="Launches" image="moon.stars.fill" catalog="system" id="jcs-fY-kGK">
                                                 <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </tabBarItem>
                                             <tabBarItem systemItem="search" id="fNh-lr-xaq"/>
@@ -125,6 +125,7 @@
                         <outlet property="activityIndicator" destination="Gjz-iz-ku6" id="eHU-fP-qGw"/>
                         <outlet property="launchTableView" destination="hOo-fA-GkQ" id="ztY-Z1-BWo"/>
                         <outlet property="loadingView" destination="j0t-o0-7u6" id="qbt-EA-Ubx"/>
+                        <outlet property="mainTabBar" destination="SQa-3P-xl6" id="sHg-XK-zi8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -134,6 +135,7 @@
     </scenes>
     <resources>
         <image name="logo" width="341" height="341"/>
+        <image name="moon.stars.fill" catalog="system" width="124" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
