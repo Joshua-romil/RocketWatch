@@ -60,11 +60,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
         let videoLinkFromSelectedCell = launchViewModel.launchList[indexPath.section].links?.videoLink
         
-        
         let storyboard = UIStoryboard(name: "WebStoryboard", bundle: nil)
         let vc = storyboard.instantiateInitialViewController()! as WebViewController
         vc.videoLink = videoLinkFromSelectedCell!
         
+        tableView.deselectRow(at: indexPath, animated: true)
         
         self.present(vc, animated: true, completion: nil)
     }
