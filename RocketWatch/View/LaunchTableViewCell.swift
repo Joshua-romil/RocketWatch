@@ -45,10 +45,12 @@ class LaunchTableViewCell: UITableViewCell {
             }
         }
         
-        
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .default).async {
             if launchImagesURLs!.isEmpty{
-                print("Error: Launch is missing image")
+                DispatchQueue.main.async {
+                    self.rocketImage.image = UIImage(systemName: "sparkle")
+                }
+                print("Launch is missing image")
             }else{
                 do{
                     let data = try Data.init(contentsOf: launchImagesURLs![0])
