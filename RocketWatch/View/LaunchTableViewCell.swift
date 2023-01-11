@@ -27,13 +27,6 @@ class LaunchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    //Does not work.
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.contentView.frame = self.contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
-        
-    }
-    
     func configureCellLabels(item: LaunchesQuery.Data.Launch){
         missionLabel.text = item.missionName
         siteLabel.text = item.launchSite?.siteName
@@ -52,6 +45,7 @@ class LaunchTableViewCell: UITableViewCell {
             }
         }
         
+        
         DispatchQueue.global(qos: .background).async {
             if launchImagesURLs!.isEmpty{
                 print("Error: Launch is missing image")
@@ -60,6 +54,7 @@ class LaunchTableViewCell: UITableViewCell {
                     let data = try Data.init(contentsOf: launchImagesURLs![0])
                     DispatchQueue.main.async {
                         self.rocketImage.image = UIImage(data: data)
+                        self.rocketImage.setRounded()
                     }
                 }
                 catch{
@@ -71,3 +66,12 @@ class LaunchTableViewCell: UITableViewCell {
     }
     
 }
+
+extension UIImageView {
+
+    func setRounded() {
+        self.layer.cornerRadius = (self.frame.height / 2)
+        self.layer.masksToBounds = true
+    }
+}
+
