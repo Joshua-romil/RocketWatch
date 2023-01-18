@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class LaunchTableViewCell: UITableViewCell {
 
@@ -36,7 +37,9 @@ class LaunchTableViewCell: UITableViewCell {
     func configureCellImage(item: LaunchesQuery.Data.Launch){
         
         let launchImagesLinks: [String?]? = item.links?.flickrImages
-        
+        let scale = UIScreen.main.scale
+        let thumbnailSize = CGSize(width: 80 * scale, height: 80 * scale)
+                
         let launchImagesURLs = launchImagesLinks?.compactMap { urlString -> URL? in
             if let urlString = urlString {
                 return URL(string: urlString)
@@ -52,15 +55,9 @@ class LaunchTableViewCell: UITableViewCell {
                 }
                 print("Launch is missing image")
             }else{
-                do{
-                    let data = try Data.init(contentsOf: launchImagesURLs![0])
-                    DispatchQueue.main.async {
-                        self.rocketImage.image = UIImage(data: data)
-                        self.rocketImage.setRounded()
-                    }
-                }
-                catch{
-                    print("Unexpected error: \(error).")
+                DispatchQueue.main.async {
+                    self.rocketImage.sd_setImage(with: launchImagesURLs![0], placeholderImage: UIImage(systemName: "sparkle"), context: [.imageThumbnailPixelSize : thumbnailSize])
+                    self.rocketImage.setRounded()
                 }
             }
         }

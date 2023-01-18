@@ -8,5 +8,6 @@ target 'RocketWatch' do
   # Pods for TestGraphQL
 
 pod "Apollo" 
+pod 'SDWebImage'
 
 end
