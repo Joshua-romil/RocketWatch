@@ -43,7 +43,6 @@
         <!--Item 2-->
         <scene sceneID="Yld-nz-pcO">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qSw-Qt-IhE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="8iT-F3-hKg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hca-Wo-8Xc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -65,14 +64,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="xyk-fm-uTZ"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSw-Qt-IhE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-443" y="1565"/>
         </scene>
         <!--Featured-->
         <scene sceneID="c5e-6U-4sW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fiu-J4-gyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="QTo-Mq-TdB" sceneMemberID="viewController">
+                <viewController id="QTo-Mq-TdB" customClass="FeaturedViewController" customModule="RocketWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QNN-UK-qtW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,8 +105,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Featured" image="star" catalog="system" selectedImage="star.fill" id="h1o-aZ-cUF"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fiu-J4-gyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="874"/>
+            <point key="canvasLocation" x="137.68115942028987" y="873.88392857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7Dq-XA-Dfa">
