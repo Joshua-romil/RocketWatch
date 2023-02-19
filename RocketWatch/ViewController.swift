@@ -47,8 +47,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "LaunchTableViewCell", for: indexPath) as? LaunchTableViewCell{
-            cell.configureCellLabels(item: launchViewModel.launchList[indexPath.section])
-            cell.configureCellImage(item: launchViewModel.launchList[indexPath.section])
+            cell.configureTableViewCellLabels(item: launchViewModel.launchList[indexPath.section])
+            cell.configureTableViewCellImage(item: launchViewModel.launchList[indexPath.section])
             return cell
         }
         return UITableViewCell()
