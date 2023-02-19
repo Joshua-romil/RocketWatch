@@ -32,16 +32,29 @@ class FeaturedViewController: UIViewController{
     }
     
     private func createLayout() -> UICollectionViewLayout{
-        let topBannerSection = NSCollectionLayoutSection(group: NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(225)), subitems: [NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))]))
-        topBannerSection.orthogonalScrollingBehavior = .continuous
+
+        //Feature section
+        let featureItemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
+        let featureItem = [NSCollectionLayoutItem(layoutSize: featureItemLayoutSize)]
+        let featureGroupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(225))
+        let featureGroup = NSCollectionLayoutGroup.horizontal(layoutSize: featureGroupLayoutSize, subitems: featureItem)
+        let featureSection = NSCollectionLayoutSection(group: featureGroup)
+        featureSection.orthogonalScrollingBehavior = .continuous
         
-        let contentSection = NSCollectionLayoutSection(group: NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(200)), subitems: [NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(200)))]))
+        
+        //Rocket section
+        let rocketItemLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(200))
+        let rocketItem = [NSCollectionLayoutItem(layoutSize: rocketItemLayoutSize)]
+        let rocketGroupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(200))
+        let rocketGroup = NSCollectionLayoutGroup.vertical(layoutSize: rocketGroupLayoutSize, subitems: rocketItem)
+        let rocketSection = NSCollectionLayoutSection(group: rocketGroup)
+        rocketSection.orthogonalScrollingBehavior = .continuous
         
         let layout = UICollectionViewCompositionalLayout {(sectionIndex, _) -> NSCollectionLayoutSection? in
             if sectionIndex == 0{
-                return topBannerSection
+                return featureSection
             } else {
-                return contentSection
+                return rocketSection
             }
         }
         
