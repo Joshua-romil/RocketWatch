@@ -72,6 +72,7 @@
         <!--Featured-->
         <scene sceneID="c5e-6U-4sW">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fiu-J4-gyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="QTo-Mq-TdB" customClass="FeaturedViewController" customModule="RocketWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QNN-UK-qtW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -128,7 +129,6 @@
                         <outlet property="featuredCollectionView" destination="S0L-6k-1B6" id="z7c-vG-gXu"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fiu-J4-gyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="873.88392857142856"/>
         </scene>

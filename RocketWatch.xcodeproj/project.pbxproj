@@ -27,6 +27,11 @@
 		03FF334629812B480068DC34 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF334529812B480068DC34 /* FeaturedCollectionViewCell.swift */; };
 		03FF3348298160100068DC34 /* FeaturedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FF3347298160100068DC34 /* FeaturedCollectionViewCell.xib */; };
 		94495EB6CF80F3EDFDC4578C /* Pods_RocketWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 874D8475385B9651D4C0D958 /* Pods_RocketWatch.framework */; };
+		E4A0C47B29A7CCA9002D5325 /* FeaturedLaunchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0C47A29A7CCA9002D5325 /* FeaturedLaunchesViewController.swift */; };
+		E4A0C47D29A7D648002D5325 /* FeaturedLaunchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0C47C29A7D648002D5325 /* FeaturedLaunchCollectionViewCell.swift */; };
+		E4A0C47F29A7DBA8002D5325 /* FeaturedLaunchesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0C47E29A7DBA8002D5325 /* FeaturedLaunchesHeaderView.swift */; };
+		E4A0C48229A7DD7B002D5325 /* FeaturedLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0C48129A7DD7B002D5325 /* FeaturedLaunch.swift */; };
+		E4A0C48429A7DD9C002D5325 /* FeaturedLaunchesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A0C48329A7DD9C002D5325 /* FeaturedLaunchesSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +59,11 @@
 		6740A71B2FB9576733F769A6 /* Pods-RocketWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketWatch.debug.xcconfig"; path = "Target Support Files/Pods-RocketWatch/Pods-RocketWatch.debug.xcconfig"; sourceTree = "<group>"; };
 		874D8475385B9651D4C0D958 /* Pods_RocketWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RocketWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFB765E1827CB6582207565 /* Pods-RocketWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketWatch.release.xcconfig"; path = "Target Support Files/Pods-RocketWatch/Pods-RocketWatch.release.xcconfig"; sourceTree = "<group>"; };
+		E4A0C47A29A7CCA9002D5325 /* FeaturedLaunchesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunchesViewController.swift; sourceTree = "<group>"; };
+		E4A0C47C29A7D648002D5325 /* FeaturedLaunchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunchCollectionViewCell.swift; sourceTree = "<group>"; };
+		E4A0C47E29A7DBA8002D5325 /* FeaturedLaunchesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunchesHeaderView.swift; sourceTree = "<group>"; };
+		E4A0C48129A7DD7B002D5325 /* FeaturedLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunch.swift; sourceTree = "<group>"; };
+		E4A0C48329A7DD9C002D5325 /* FeaturedLaunchesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunchesSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +108,7 @@
 				03623C8B297844650026E2B6 /* FeaturedViewController.swift */,
 				03F81D01294874FD00489C70 /* WebViewController.swift */,
 				032C72AE2969A38500E517FC /* SplashViewController.swift */,
+				E4A0C47929A7CC7A002D5325 /* Featured Launches */,
 				03F81D032948758000489C70 /* WebStoryboard.storyboard */,
 				031659C129375DD1003B48FC /* Main.storyboard */,
 				031659C429375DD2003B48FC /* Assets.xcassets */,
@@ -152,6 +163,26 @@
 				DBFB765E1827CB6582207565 /* Pods-RocketWatch.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E4A0C47929A7CC7A002D5325 /* Featured Launches */ = {
+			isa = PBXGroup;
+			children = (
+				E4A0C48029A7DD6F002D5325 /* Models */,
+				E4A0C47A29A7CCA9002D5325 /* FeaturedLaunchesViewController.swift */,
+				E4A0C47C29A7D648002D5325 /* FeaturedLaunchCollectionViewCell.swift */,
+				E4A0C47E29A7DBA8002D5325 /* FeaturedLaunchesHeaderView.swift */,
+			);
+			path = "Featured Launches";
+			sourceTree = "<group>";
+		};
+		E4A0C48029A7DD6F002D5325 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4A0C48129A7DD7B002D5325 /* FeaturedLaunch.swift */,
+				E4A0C48329A7DD9C002D5325 /* FeaturedLaunchesSection.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,12 +324,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4A0C48429A7DD9C002D5325 /* FeaturedLaunchesSection.swift in Sources */,
+				E4A0C47F29A7DBA8002D5325 /* FeaturedLaunchesHeaderView.swift in Sources */,
 				031659C029375DD1003B48FC /* ViewController.swift in Sources */,
+				E4A0C47B29A7CCA9002D5325 /* FeaturedLaunchesViewController.swift in Sources */,
 				031659DB29377F01003B48FC /* LaunchList.swift in Sources */,
 				031659D929377EEB003B48FC /* ApolloNetworkHelper.swift in Sources */,
 				032C72AF2969A38500E517FC /* SplashViewController.swift in Sources */,
 				03FF334629812B480068DC34 /* FeaturedCollectionViewCell.swift in Sources */,
 				03623C8C297844650026E2B6 /* FeaturedViewController.swift in Sources */,
+				E4A0C48229A7DD7B002D5325 /* FeaturedLaunch.swift in Sources */,
+				E4A0C47D29A7D648002D5325 /* FeaturedLaunchCollectionViewCell.swift in Sources */,
 				031659D529377E74003B48FC /* LaunchTableViewCell.swift in Sources */,
 				031659BC29375DD1003B48FC /* AppDelegate.swift in Sources */,
 				031659BE29375DD1003B48FC /* SceneDelegate.swift in Sources */,
