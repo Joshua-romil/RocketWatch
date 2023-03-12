@@ -50,6 +50,7 @@ class FeaturedViewController: UIViewController{
         let rocketSection = NSCollectionLayoutSection(group: rocketGroup)
         rocketSection.orthogonalScrollingBehavior = .continuous
         
+        //Compositional Layout
         let layout = UICollectionViewCompositionalLayout {(sectionIndex, _) -> NSCollectionLayoutSection? in
             if sectionIndex == 0{
                 return featureSection
