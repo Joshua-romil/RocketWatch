@@ -19,6 +19,8 @@ class LaunchViewModel{
     var launchList = [LaunchesQuery.Data.Launch]()
     weak var delegate: LaunchViewModelDelegate?
     
+
+    
     func fetchLaunchList(){
         launchList.removeAll()
         let apolloNetworkHelper = ApolloNetworkHelper.shared
@@ -27,7 +29,7 @@ class LaunchViewModel{
             
             switch result{
                 case .success(let graphQLResult):
-                    debugPrint("graphQLResult: \(graphQLResult)")
+                    //debugPrint("graphQLResult: \(graphQLResult)")
                 if let errors = graphQLResult.errors {
                     let message = errors.map{$0.localizedDescription}.joined(separator: "\n")
                     self?.delegate?.didFail(errorMessage: message)
@@ -36,6 +38,7 @@ class LaunchViewModel{
                 if let launchConnection = graphQLResult.data?.launches{
                     self?.launchList.append(contentsOf: launchConnection.compactMap{$0})
                 }
+                
                 //MOVE THIS TO THE RIGHT PLACE. BUT WHERE?
                 self?.delegate?.didReceiveData()
                 case .failure(let error):

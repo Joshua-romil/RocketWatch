@@ -22,6 +22,14 @@
 		032C72AF2969A38500E517FC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C72AE2969A38500E517FC /* SplashViewController.swift */; };
 		03623C8C297844650026E2B6 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03623C8B297844650026E2B6 /* FeaturedViewController.swift */; };
 		0363E8F72937AF3500B5F96C /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 0363E8F62937AF3500B5F96C /* schema.json */; };
+		0371E1592AC72DE900585778 /* PagingSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */; };
+		0371E15B2AC87C4A00585778 /* FeaturedHeaderPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */; };
+		037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 037AC8452A65C02F00495F9C /* Rockets.graphql */; };
+		037AC8482A65C30A00495F9C /* Rockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037AC8472A65C30A00495F9C /* Rockets.swift */; };
+		037AC84A2A65C84A00495F9C /* RocketsLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037AC8492A65C84A00495F9C /* RocketsLaunchViewModel.swift */; };
+		03CFCA2829E0386000CB9FED /* FeaturedLaunchesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CFCA2729E0386000CB9FED /* FeaturedLaunchesHeaderView.swift */; };
+		03CFCA2B29E03A2900CB9FED /* FeaturedLaunchesSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CFCA2A29E03A2900CB9FED /* FeaturedLaunchesSection.swift */; };
+		03CFCA2D29E03A9600CB9FED /* FeaturedLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CFCA2C29E03A9600CB9FED /* FeaturedLaunch.swift */; };
 		03F81D042948758000489C70 /* WebStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03F81D032948758000489C70 /* WebStoryboard.storyboard */; };
 		03F81D052949FE8A00489C70 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F81D01294874FD00489C70 /* WebViewController.swift */; };
 		03FF334629812B480068DC34 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF334529812B480068DC34 /* FeaturedCollectionViewCell.swift */; };
@@ -47,6 +55,14 @@
 		032C72AE2969A38500E517FC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		03623C8B297844650026E2B6 /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		0363E8F62937AF3500B5F96C /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingSectionFooterView.swift; sourceTree = "<group>"; };
+		0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedHeaderPageControl.swift; sourceTree = "<group>"; };
+		037AC8452A65C02F00495F9C /* Rockets.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rockets.graphql; sourceTree = "<group>"; };
+		037AC8472A65C30A00495F9C /* Rockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rockets.swift; sourceTree = "<group>"; };
+		037AC8492A65C84A00495F9C /* RocketsLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsLaunchViewModel.swift; sourceTree = "<group>"; };
+		03CFCA2729E0386000CB9FED /* FeaturedLaunchesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunchesHeaderView.swift; sourceTree = "<group>"; };
+		03CFCA2A29E03A2900CB9FED /* FeaturedLaunchesSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunchesSection.swift; sourceTree = "<group>"; };
+		03CFCA2C29E03A9600CB9FED /* FeaturedLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunch.swift; sourceTree = "<group>"; };
 		03F81D01294874FD00489C70 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		03F81D032948758000489C70 /* WebStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebStoryboard.storyboard; sourceTree = "<group>"; };
 		03FF334529812B480068DC34 /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -89,6 +105,7 @@
 		031659BA29375DD1003B48FC /* RocketWatch */ = {
 			isa = PBXGroup;
 			children = (
+				03CFCA2929E03A0B00CB9FED /* Models */,
 				0363E8FA2937B7AF00B5F96C /* GraphQL */,
 				031659D129377DF7003B48FC /* ViewModel */,
 				031659D229377E0E003B48FC /* View */,
@@ -98,6 +115,7 @@
 				03623C8B297844650026E2B6 /* FeaturedViewController.swift */,
 				03F81D01294874FD00489C70 /* WebViewController.swift */,
 				032C72AE2969A38500E517FC /* SplashViewController.swift */,
+				0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */,
 				03F81D032948758000489C70 /* WebStoryboard.storyboard */,
 				031659C129375DD1003B48FC /* Main.storyboard */,
 				031659C429375DD2003B48FC /* Assets.xcassets */,
@@ -111,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				031659CF29377DEB003B48FC /* LaunchViewModel.swift */,
+				037AC8492A65C84A00495F9C /* RocketsLaunchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -122,6 +141,8 @@
 				031659D429377E74003B48FC /* LaunchTableViewCell.xib */,
 				03FF334529812B480068DC34 /* FeaturedCollectionViewCell.swift */,
 				03FF3347298160100068DC34 /* FeaturedCollectionViewCell.xib */,
+				03CFCA2729E0386000CB9FED /* FeaturedLaunchesHeaderView.swift */,
+				0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,10 +152,21 @@
 			children = (
 				0363E8F62937AF3500B5F96C /* schema.json */,
 				031659D829377EEB003B48FC /* ApolloNetworkHelper.swift */,
+				037AC8472A65C30A00495F9C /* Rockets.swift */,
 				031659DA29377F01003B48FC /* LaunchList.swift */,
 				031659DC29377F2E003B48FC /* LaunchList.graphql */,
+				037AC8452A65C02F00495F9C /* Rockets.graphql */,
 			);
 			name = GraphQL;
+			sourceTree = "<group>";
+		};
+		03CFCA2929E03A0B00CB9FED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				03CFCA2A29E03A2900CB9FED /* FeaturedLaunchesSection.swift */,
+				03CFCA2C29E03A9600CB9FED /* FeaturedLaunch.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7454DF0B6960C67E34CCD494 /* Frameworks */ = {
@@ -221,6 +253,7 @@
 				031659C329375DD1003B48FC /* Main.storyboard in Resources */,
 				03F81D042948758000489C70 /* WebStoryboard.storyboard in Resources */,
 				0363E8F72937AF3500B5F96C /* schema.json in Resources */,
+				037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */,
 				03FF3348298160100068DC34 /* FeaturedCollectionViewCell.xib in Resources */,
 				031659DD29377F2E003B48FC /* LaunchList.graphql in Resources */,
 			);
@@ -245,7 +278,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*LaunchList.graphql --localSchemaFile=\"schema.json\" LaunchList.swift\n\n\n\n";
+			shellScript = "# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*LaunchList.graphql --localSchemaFile=\"schema.json\" LaunchList.swift\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*Rockets.graphql --localSchemaFile=\"schema.json\" Rockets.swift\n\n\n\n";
 		};
 		056534727E8F06D37680DE1A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -295,14 +328,21 @@
 			files = (
 				031659C029375DD1003B48FC /* ViewController.swift in Sources */,
 				031659DB29377F01003B48FC /* LaunchList.swift in Sources */,
+				0371E1592AC72DE900585778 /* PagingSectionFooterView.swift in Sources */,
 				031659D929377EEB003B48FC /* ApolloNetworkHelper.swift in Sources */,
+				037AC8482A65C30A00495F9C /* Rockets.swift in Sources */,
 				032C72AF2969A38500E517FC /* SplashViewController.swift in Sources */,
+				03CFCA2829E0386000CB9FED /* FeaturedLaunchesHeaderView.swift in Sources */,
+				03CFCA2B29E03A2900CB9FED /* FeaturedLaunchesSection.swift in Sources */,
 				03FF334629812B480068DC34 /* FeaturedCollectionViewCell.swift in Sources */,
 				03623C8C297844650026E2B6 /* FeaturedViewController.swift in Sources */,
+				037AC84A2A65C84A00495F9C /* RocketsLaunchViewModel.swift in Sources */,
 				031659D529377E74003B48FC /* LaunchTableViewCell.swift in Sources */,
 				031659BC29375DD1003B48FC /* AppDelegate.swift in Sources */,
+				0371E15B2AC87C4A00585778 /* FeaturedHeaderPageControl.swift in Sources */,
 				031659BE29375DD1003B48FC /* SceneDelegate.swift in Sources */,
 				031659D029377DEB003B48FC /* LaunchViewModel.swift in Sources */,
+				03CFCA2D29E03A9600CB9FED /* FeaturedLaunch.swift in Sources */,
 				03F81D052949FE8A00489C70 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

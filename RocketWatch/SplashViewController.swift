@@ -17,5 +17,17 @@ class SplashViewController: UIViewController {
             self.performSegue(withIdentifier: "OpenMain", sender: nil)
         }
     }
+    
+    private func featuredLaunchesSection() -> [FeaturedLaunchesSection] {
+        return (0...6).map {
+            FeaturedLaunchesSection(name: "Section \($0)", launches: (0...10).map {
+                
+                let randomSize = 200 * (Int.random(in: 1...12))
+                let imageURL = "http://placekitten.com/\(randomSize)/\(randomSize)"
+                
+                return FeaturedLaunch(name: "Launch \($0)", imageURL: URL(string: imageURL)!)
+            })
+        }
+    }
 
 }
