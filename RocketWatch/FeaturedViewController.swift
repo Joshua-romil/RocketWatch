@@ -103,6 +103,7 @@ class FeaturedViewController: UIViewController{
         let pageControlSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
         let pageControl = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: pageControlSize, elementKind: Self.pageControlIdentifier, alignment: .bottom)
         
+        
         featureSection.boundarySupplementaryItems = [
             pageControl
         ]
