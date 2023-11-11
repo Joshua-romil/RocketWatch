@@ -17,20 +17,16 @@ class FeaturedViewController: UIViewController{
     @IBOutlet weak var featuredCollectionView: UICollectionView!
     
     var dataSource: UICollectionViewDataSource?
+    var pageControl: UIPageControl?
     var launchViewModel: LaunchViewModel = LaunchViewModel()
     
     static var headerIdentifier = "featured-launches-header"
     static var pageControlIdentifier = "featured-page-control"
     static var cellIdentifier = "featured-launches-cell"
-    
-    let sections: [FeaturedLaunchesSection] = []
         
     private var appDelegate: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
-    
-    //private let pagingInfoSubject = PassthroughSubject<PagingInfo, Never>()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,14 +42,6 @@ class FeaturedViewController: UIViewController{
         featuredCollectionView.delegate = self
         
     }
-  
-    //kod som jag bara har testat och experimenterat med
-//    @objc func pageControlValueChanged(_ sender: UIPageControl) {
-//        let xOffset = featuredCollectionView.frame.width * CGFloat(sender.currentPage)
-//        featuredCollectionView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
-//    }
-    
-
     
     private func registerHeader(){
         self.featuredCollectionView.register(FeaturedLaunchesHeaderView.self, forSupplementaryViewOfKind: Self.headerIdentifier, withReuseIdentifier: Self.headerIdentifier)
@@ -66,11 +54,6 @@ class FeaturedViewController: UIViewController{
     private func registerCell(){
         self.featuredCollectionView.register(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeaturedCollectionViewCell")
     }
-    
-//    private func registerPagingSection{
-//        self.featuredCollectionView.register(PagingSectionFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PagingSectionFooterView.reuseIdentifier)
-//
-//    }
     
     private func createLayout() -> UICollectionViewLayout{
 
@@ -103,14 +86,18 @@ class FeaturedViewController: UIViewController{
         let pageControlSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
         let pageControl = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: pageControlSize, elementKind: Self.pageControlIdentifier, alignment: .bottom)
         
+        featureSection.visibleItemsInvalidationHandler = { items, contentOffset, environment in
+            let currentPage = Int(max(0, round(contentOffset.x / environment.container.contentSize.width)))
+            self.pageControl?.currentPage = currentPage
+        }
+        
         featureSection.boundarySupplementaryItems = [
             pageControl
         ]
-
+        
         rocketSection.boundarySupplementaryItems = [
             sectionHeader
         ]
-        
         
         //Compositional Layout
         let layout = UICollectionViewCompositionalLayout {(sectionIndex, _) -> NSCollectionLayoutSection? in
@@ -191,10 +178,7 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
             
             let rockets = appDelegate.rocketViewModel.rocketsList
             let rocketName = rockets[indexPath.item].name
-            
-            cell.rocketImage.layer.cornerRadius = 16
-            cell.rocketImage.clipsToBounds = true
-            
+                        
             if indexPath.section != 0{
                 cell.layer.cornerRadius = 16
                 cell.clipsToBounds = true
@@ -241,27 +225,12 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         
         let pageControl = collectionView.dequeueReusableSupplementaryView(ofKind: Self.pageControlIdentifier, withReuseIdentifier: Self.pageControlIdentifier, for: indexPath) as! FeaturedHeaderPageControl
         
+        self.pageControl = pageControl.pageControl
+        
         if indexPath.section == 0{
             pageControl.pageControl.numberOfPages = 3
-            pageControl.pageControl.currentPage = 0
         }
         return pageControl
 
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        self.pageControl.currentPage = indexPath.section
-//    }
-    
 }
-
-
-//extension FeaturedViewController: UIScrollViewDelegate{
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let offSet = scrollView.contentOffset.x
-//        let width = scrollView.frame.width
-//        let horizontalCenter = width / 2
-//
-//        pageControl.currentPage = Int(offSet + horizontalCenter) / Int(width)
-//    }
-//}

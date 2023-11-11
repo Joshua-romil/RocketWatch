@@ -29,6 +29,13 @@ class FeaturedHeaderPageControl: UICollectionReusableView {
         pageControl.currentPage = 0
         pageControl.tintColor = .gray // Set the color of inactive dots
         pageControl.currentPageIndicatorTintColor = .white // Set the color of the active dot
+        
+        // Center the page control horizontally
+       pageControl.translatesAutoresizingMaskIntoConstraints = false //setting this property to false, means we are using autolayout
+       NSLayoutConstraint.activate([
+           pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
+           pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -70),
+       ])
     }
 
         

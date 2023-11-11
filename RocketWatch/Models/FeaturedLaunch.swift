@@ -5,10 +5,10 @@
 //  Created by Joshua George on 2023-04-07.
 //
 
-import Foundation
+import UIKit
 
-struct FeaturedLaunch: Codable {
-    
-    let name: String
-    let imageURL: URL
+struct FeaturedLaunch {
+    let rocketName: String
+    let launchSite: String
+    let image: UIImage
 }
