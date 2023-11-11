@@ -28,9 +28,6 @@ class FeaturedViewController: UIViewController{
         return UIApplication.shared.delegate as! AppDelegate
     }
     
-    //private let pagingInfoSubject = PassthroughSubject<PagingInfo, Never>()
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
