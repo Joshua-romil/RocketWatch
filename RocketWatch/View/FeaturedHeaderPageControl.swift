@@ -34,7 +34,7 @@ class FeaturedHeaderPageControl: UICollectionReusableView {
        pageControl.translatesAutoresizingMaskIntoConstraints = false //setting this property to false, means we are using autolayout
        NSLayoutConstraint.activate([
            pageControl.centerXAnchor.constraint(equalTo: centerXAnchor),
-           pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -70),
+           pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -55),
        ])
     }
 
