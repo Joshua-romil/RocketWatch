@@ -27,6 +27,8 @@
 		037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 037AC8452A65C02F00495F9C /* Rockets.graphql */; };
 		037AC8482A65C30A00495F9C /* Rockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037AC8472A65C30A00495F9C /* Rockets.swift */; };
 		037AC84A2A65C84A00495F9C /* RocketsLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037AC8492A65C84A00495F9C /* RocketsLaunchViewModel.swift */; };
+		0396100B2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039610092B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.swift */; };
+		0396100C2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0396100A2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib */; };
 		03CFCA2829E0386000CB9FED /* FeaturedLaunchesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CFCA2729E0386000CB9FED /* FeaturedLaunchesHeaderView.swift */; };
 		03CFCA2D29E03A9600CB9FED /* FeaturedLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03CFCA2C29E03A9600CB9FED /* FeaturedLaunch.swift */; };
 		03F81D042948758000489C70 /* WebStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03F81D032948758000489C70 /* WebStoryboard.storyboard */; };
@@ -59,6 +61,8 @@
 		037AC8452A65C02F00495F9C /* Rockets.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rockets.graphql; sourceTree = "<group>"; };
 		037AC8472A65C30A00495F9C /* Rockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rockets.swift; sourceTree = "<group>"; };
 		037AC8492A65C84A00495F9C /* RocketsLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsLaunchViewModel.swift; sourceTree = "<group>"; };
+		039610092B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		0396100A2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedCarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 		03CFCA2729E0386000CB9FED /* FeaturedLaunchesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunchesHeaderView.swift; sourceTree = "<group>"; };
 		03CFCA2C29E03A9600CB9FED /* FeaturedLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedLaunch.swift; sourceTree = "<group>"; };
 		03F81D01294874FD00489C70 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				03FF3347298160100068DC34 /* FeaturedCollectionViewCell.xib */,
 				03CFCA2729E0386000CB9FED /* FeaturedLaunchesHeaderView.swift */,
 				0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */,
+				039610092B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.swift */,
+				0396100A2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -248,6 +254,7 @@
 				031659C529375DD2003B48FC /* Assets.xcassets in Resources */,
 				031659D629377E74003B48FC /* LaunchTableViewCell.xib in Resources */,
 				031659C329375DD1003B48FC /* Main.storyboard in Resources */,
+				0396100C2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib in Resources */,
 				03F81D042948758000489C70 /* WebStoryboard.storyboard in Resources */,
 				0363E8F72937AF3500B5F96C /* schema.json in Resources */,
 				037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */,
@@ -339,6 +346,7 @@
 				031659BE29375DD1003B48FC /* SceneDelegate.swift in Sources */,
 				031659D029377DEB003B48FC /* LaunchViewModel.swift in Sources */,
 				03CFCA2D29E03A9600CB9FED /* FeaturedLaunch.swift in Sources */,
+				0396100B2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.swift in Sources */,
 				03F81D052949FE8A00489C70 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

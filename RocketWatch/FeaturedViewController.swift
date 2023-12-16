@@ -7,11 +7,12 @@
 
 import UIKit
 
-struct PagingInfo: Equatable,Hashable{
-    let sectionIndex: Int
-    let currentPage: Int
+struct CarouselCell{
+    let title: String
+    let subtitle: String
+    let image: UIImage
 }
-
+ 
 class FeaturedViewController: UIViewController{
 
     @IBOutlet weak var featuredCollectionView: UICollectionView!
@@ -20,6 +21,11 @@ class FeaturedViewController: UIViewController{
     var pageControl: UIPageControl?
     var launchViewModel: LaunchViewModel = LaunchViewModel()
     
+    var carouselCells: [CarouselCell] = [
+        CarouselCell(title: "Falcon 1 Rocket", subtitle: "Kennedy Space Center Launch Complex", image: UIImage(named: "Falcon1")!),
+        CarouselCell(title: "Falcon 9 Rocket", subtitle: "Testing purpose", image: UIImage(named: "Falcon9")!),
+        CarouselCell(title: "Latest Flight Was a Blast", subtitle: "SpaceX team successfully launched Starship", image: UIImage(named: "Starship")!)]
+
     static var headerIdentifier = "featured-launches-header"
     static var pageControlIdentifier = "featured-page-control"
     static var cellIdentifier = "featured-launches-cell"
@@ -37,6 +43,7 @@ class FeaturedViewController: UIViewController{
         registerHeader()
         registerCell()
         registerPageControl()
+        registerCarouselCell()
         
         featuredCollectionView.dataSource = self
         featuredCollectionView.delegate = self
@@ -55,6 +62,11 @@ class FeaturedViewController: UIViewController{
         self.featuredCollectionView.register(UINib(nibName: "FeaturedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeaturedCollectionViewCell")
     }
     
+    private func registerCarouselCell(){
+        self.featuredCollectionView.register(UINib(nibName: "FeaturedCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeaturedCarouselCollectionViewCell")
+    }
+
+    
     private func createLayout() -> UICollectionViewLayout{
 
         //Feature section
@@ -65,6 +77,7 @@ class FeaturedViewController: UIViewController{
         let featureSection = NSCollectionLayoutSection(group: featureGroup)
         featureSection.orthogonalScrollingBehavior = .paging
         featureSection.contentInsets.bottom = 20
+        //featureSection.
     
         
         //Rocket section
@@ -155,12 +168,12 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        print(section)
-        
+        //Featured header section
         if section == 0 {
             return 3
         }
         
+        //Rockets section
         if section == 1 {
             return 4
         }
@@ -174,40 +187,82 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell{
+        if indexPath.section == 0
+        {
             
-            let rockets = appDelegate.rocketViewModel.rocketsList
-            let rocketName = rockets[indexPath.item].name
-                        
-            if indexPath.section != 0{
-                cell.layer.cornerRadius = 16
-                cell.clipsToBounds = true
+            if let carouselCell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as? FeaturedCarouselCollectionViewCell{
+                
+                carouselCell.carouselImage.alpha = 0.3
+                
+                switch indexPath.row {
+                case 0:
+                    carouselCell.carouselImage.image = carouselCells[0].image
+                    carouselCell.title.text = carouselCells[0].title
+                case 1:
+                    carouselCell.carouselImage.image = carouselCells[1].image
+                    carouselCell.title.text = carouselCells[1].title
+                case 2:
+                    carouselCell.carouselImage.image = carouselCells[2].image
+                    carouselCell.title.text = carouselCells[2].title
+                default:
+                    break
+                }
+                
+                return carouselCell
             }
-
-            
-            cell.rocketLabel.text = rocketName
-            cell.rocketLabel.textColor = .white
-            
-            switch rocketName {
-            case "Falcon 1":
-                cell.rocketImage.image = UIImage(named: "Falcon1")
-            case "Falcon 9":
-                cell.rocketImage.image = UIImage(named: "Falcon9")
-            case "Falcon Heavy":
-                cell.rocketImage.image = UIImage(named: "FalconHeavy")
-            case "Starship":
-                cell.rocketImage.image = UIImage(named: "Starship")
-            default:
-                cell.rocketImage.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(systemName: "sparkle"))
-            }
-            
-            return cell
         }
+        else
+        {
+            if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell{
+                
+                let rockets = appDelegate.rocketViewModel.rocketsList
+                let rocketName = rockets[indexPath.item].name
+                
+                let featuredHeaderSubtitle: UILabel = UILabel(frame: cell.frame)
+                
+                featuredHeaderSubtitle.textAlignment = .center
+                featuredHeaderSubtitle.textColor = .white
+                
+                if indexPath.section != 0{
+                    cell.layer.cornerRadius = 16
+                    cell.clipsToBounds = true
+                }
+                
+                //Rockets section
+                if indexPath.section == 1 {
+                    cell.rocketImage.alpha = 1
+                    cell.rocketLabel.text = rocketName
+                    cell.rocketLabel.textColor = .white
+                    
+                    switch rocketName {
+                    case "Falcon 1":
+                        cell.rocketImage.image = UIImage(named: "Falcon1")
+                    case "Falcon 9":
+                        cell.rocketImage.image = UIImage(named: "Falcon9")
+                    case "Falcon Heavy":
+                        cell.rocketImage.image = UIImage(named: "FalconHeavy")
+                    case "Starship":
+                        cell.rocketImage.image = UIImage(named: "Starship")
+                    default:
+                        cell.rocketImage.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(systemName: "sparkle"))
+                    }
+                
+                }
+                
+                //Ships section
+                if indexPath.section == 2{
+                    //TODO: Create functionality for displaying ships
+                }
+                            
+                return cell
+            }
+        }
+        
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
+                
         if kind == Self.headerIdentifier{
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: Self.headerIdentifier, withReuseIdentifier: Self.headerIdentifier, for: indexPath) as! FeaturedLaunchesHeaderView
             print(indexPath.section)
@@ -227,9 +282,6 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         
         self.pageControl = pageControl.pageControl
         
-        if indexPath.section == 0{
-            pageControl.pageControl.numberOfPages = 3
-        }
         return pageControl
 
     }
