@@ -1,24 +1,28 @@
 //
-//  RocketsLaunchViewModel.swift
+//  ShipsViewModel.swift
 //  RocketWatch
 //
-//  Created by Joshua George on 2023-07-17.
+//  Created by Joshua George on 2023-12-16.
 //
 
 import Foundation
-import Apollo
 
-
-class RocketsViewModel{
-    var rocketsList = [RocketsQuery.Data.Rocket]()
-    weak var delegate: LaunchViewModelDelegate?
+protocol ShipViewModelDelegate: AnyObject{
     
+    func didReceiveData()
+    func didFail(errorMessage: String)
+    
+}
 
-    func fetchRocketList(){
-        rocketsList.removeAll()
+class ShipsViewModel{
+    var shipsList = [ShipsQuery.Data.Ship]()
+    weak var delegate: ShipViewModelDelegate?
+    
+    func fetchShipsList(){
+        shipsList.removeAll()
         let apolloNetworkHelper = ApolloNetworkHelper.shared
-        apolloNetworkHelper.graphQLType = .launchList
-        apolloNetworkHelper.apolloClient.fetch(query: RocketsQuery()){ [weak self] result in
+        apolloNetworkHelper.graphQLType = .shipList
+        apolloNetworkHelper.apolloClient.fetch(query: ShipsQuery()){ [weak self] result in
             
             switch result{
                 case .success(let graphQLResult):
@@ -27,16 +31,19 @@ class RocketsViewModel{
                         self?.delegate?.didFail(errorMessage: message)
                         return
                     }
-                    if let launchConnection = graphQLResult.data?.rockets{
-                        self?.rocketsList.append(contentsOf: launchConnection.compactMap{$0})
+                    if let shipConnection = graphQLResult.data?.ships{
+                        self?.shipsList.append(contentsOf: shipConnection.compactMap{$0})
                     }
-                
+                    
                     //MOVE THIS TO THE RIGHT PLACE. BUT WHERE?
                     self?.delegate?.didReceiveData()
                 case .failure(let error):
                     debugPrint("Error: \(error)")
                     self?.delegate?.didFail(errorMessage: error.localizedDescription)
             }
+            
         }
+            
     }
+    
 }
