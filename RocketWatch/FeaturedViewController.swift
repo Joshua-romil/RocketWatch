@@ -187,6 +187,7 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        //Carousel section
         if indexPath.section == 0
         {
             
@@ -211,7 +212,7 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
                 return carouselCell
             }
         }
-        else
+        else //Rockets + ships section
         {
             if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell{
                 

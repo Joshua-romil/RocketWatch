@@ -8,12 +8,6 @@
 import Foundation
 import Apollo
 
-protocol RocketsViewModelDelegate: AnyObject{
-    
-    func didReceiveData()
-    func didFail(errorMessage: String)
-    
-}
 
 class RocketsViewModel{
     var rocketsList = [RocketsQuery.Data.Rocket]()
@@ -28,22 +22,21 @@ class RocketsViewModel{
             
             switch result{
                 case .success(let graphQLResult):
-                    //debugPrint("graphQLResult: \(graphQLResult)")
-                if let errors = graphQLResult.errors {
-                    let message = errors.map{$0.localizedDescription}.joined(separator: "\n")
-                    self?.delegate?.didFail(errorMessage: message)
-                    return
-                }
-                if let launchConnection = graphQLResult.data?.rockets{
-                    self?.rocketsList.append(contentsOf: launchConnection.compactMap{$0})
-                }
+                    if let errors = graphQLResult.errors {
+                        let message = errors.map{$0.localizedDescription}.joined(separator: "\n")
+                        self?.delegate?.didFail(errorMessage: message)
+                        return
+                    }
+                    if let launchConnection = graphQLResult.data?.rockets{
+                        self?.rocketsList.append(contentsOf: launchConnection.compactMap{$0})
+                    }
                 
-                //MOVE THIS TO THE RIGHT PLACE. BUT WHERE?
-                self?.delegate?.didReceiveData()
+                    //MOVE THIS TO THE RIGHT PLACE. BUT WHERE?
+                    self?.delegate?.didReceiveData()
                 case .failure(let error):
                     debugPrint("Error: \(error)")
                     self?.delegate?.didFail(errorMessage: error.localizedDescription)
-                }
+            }
         }
     }
 }

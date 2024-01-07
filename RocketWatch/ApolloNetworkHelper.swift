@@ -11,6 +11,7 @@ import Apollo
 enum GraphQLType: String{
     case launchList
     case userList
+    case shipList
 }
 
 final class ApolloNetworkHelper{
@@ -34,6 +35,8 @@ final class ApolloNetworkHelper{
     private func getGraphQLURL(type: GraphQLType) -> String {
         switch type {
         case .launchList:
+            return "https://spacex-production.up.railway.app/"
+        case .shipList:
             return "https://spacex-production.up.railway.app/"
         case .userList:
             return "https://api.spacex.land/graphql/userList"
