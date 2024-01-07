@@ -91,6 +91,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
 }
 
+//Delegate for LaunchViewModel and ShipViewModel
 extension ViewController: LaunchViewModelDelegate,ShipViewModelDelegate{
     
     func didReceiveData() {
