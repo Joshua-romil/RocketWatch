@@ -14,15 +14,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var mainTabBar: UITabBar!
     
-    var launchViewModel: LaunchViewModel = LaunchViewModel()
+    //var launchViewModel: LaunchViewModel = LaunchViewModel()
     var webViewController: WebViewController = WebViewController()
+    
+    private var appDelegate: AppDelegate {
+           return UIApplication.shared.delegate as! AppDelegate
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTabBar.selectedItem = mainTabBar.items?.first
         activityIndicator.startAnimating()
         registerCell()
         fetchAPI()
@@ -34,8 +36,11 @@ class ViewController: UIViewController {
     
     private func fetchAPI(){
         self.loadingView.isHidden = false
-        launchViewModel.delegate = self
-        launchViewModel.fetchLaunchList()
+        
+        appDelegate.launchViewModel.delegate = self
+        appDelegate.rocketViewModel.delegate = self
+        appDelegate.launchViewModel.fetchLaunchList()
+        appDelegate.rocketViewModel.fetchRocketList()
     }
     
     private func registerCell(){
@@ -49,8 +54,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "LaunchTableViewCell", for: indexPath) as? LaunchTableViewCell{
-            cell.configureCellLabels(item: launchViewModel.launchList[indexPath.section])
-            cell.configureCellImage(item: launchViewModel.launchList[indexPath.section])
+            cell.configureTableViewCellLabels(item: appDelegate.launchViewModel.launchList[indexPath.section])
+            cell.configureTableViewCellImage(item: appDelegate.launchViewModel.launchList[indexPath.section])
             return cell
         }
         return UITableViewCell()
@@ -58,7 +63,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let videoLinkFromSelectedCell = launchViewModel.launchList[indexPath.section].links?.videoLink
+        let videoLinkFromSelectedCell = appDelegate.launchViewModel.launchList[indexPath.section].links?.videoLink
+        let rockets = appDelegate.rocketViewModel.rocketsList
         
         let storyboard = UIStoryboard(name: "WebStoryboard", bundle: nil)
         let vc = storyboard.instantiateInitialViewController()! as WebViewController
@@ -74,7 +80,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return launchViewModel.launchList.count
+        return appDelegate.launchViewModel.launchList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -16,6 +16,7 @@ class LaunchTableViewCell: UITableViewCell {
     @IBOutlet weak var rocketImage: UIImageView!
     
     public var launchImagesURLs: [URL] = []
+    private let defaultImage = UIImage(systemName: "sparkle")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,13 +29,13 @@ class LaunchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCellLabels(item: LaunchesQuery.Data.Launch){
+    func configureTableViewCellLabels(item: LaunchesQuery.Data.Launch){
         missionLabel.text = item.missionName
         siteLabel.text = item.launchSite?.siteName
         rocketLabel.text = item.rocket?.rocketName
     }
     
-    func configureCellImage(item: LaunchesQuery.Data.Launch){
+    func configureTableViewCellImage(item: LaunchesQuery.Data.Launch){
         
         let launchImagesLinks: [String?]? = item.links?.flickrImages
         let scale = UIScreen.main.scale
@@ -51,12 +52,12 @@ class LaunchTableViewCell: UITableViewCell {
         DispatchQueue.global(qos: .default).async {
             if launchImagesURLs!.isEmpty{
                 DispatchQueue.main.async {
-                    self.rocketImage.image = UIImage(systemName: "sparkle")
+                    self.rocketImage.image = self.defaultImage
                 }
                 print("Launch is missing image")
             }else{
                 DispatchQueue.main.async {
-                    self.rocketImage.sd_setImage(with: launchImagesURLs![0], placeholderImage: UIImage(systemName: "sparkle"), context: [.imageThumbnailPixelSize : thumbnailSize])
+                    self.rocketImage.sd_setImage(with: launchImagesURLs![0], placeholderImage: self.defaultImage, context: [.imageThumbnailPixelSize : thumbnailSize])
                     self.rocketImage.setRounded()
                 }
             }
