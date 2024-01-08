@@ -11,9 +11,10 @@ import SDWebImage
 class FeaturedCollectionViewCell: UICollectionViewCell {
 
     
-    @IBOutlet weak var rocketLabel: UILabel!
-    @IBOutlet weak var rocketImage: UIImageView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var image: UIImageView!
     
+    private let defaultImage = UIImage(systemName: "sparkle")
     private var appDelegate: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -76,8 +77,34 @@ class FeaturedCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configureCollectionViewCellImage(){
+    func configureShipCollectionViewCell(item: ShipsQuery.Data.Ship){
         
+        let shipImageLink: String? = item.image
+        let shipName: String? = item.name
+        
+        if let shipImageUrl = shipImageLink, let url = URL(string: shipImageUrl) {
+            DispatchQueue.global(qos: .default).async {
+                if url == nil{
+                    DispatchQueue.main.async {
+                        self.image.image = self.defaultImage
+                    }
+                    print("Ship image is missing")
+                }else{
+                    DispatchQueue.main.async {
+                        self.image.sd_setImage(with: url)
+                    }
+                }
+
+            }
+        } else {
+            print("Invalid URL")
+        }
+        
+        if shipName != nil{
+            self.label.text = shipName
+        }else{
+            print("Ship name does not exist")
+        }
     }
     
 }

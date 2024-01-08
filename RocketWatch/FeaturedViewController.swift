@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 struct CarouselCell{
     let title: String
@@ -20,6 +22,8 @@ class FeaturedViewController: UIViewController{
     var dataSource: UICollectionViewDataSource?
     var pageControl: UIPageControl?
     var launchViewModel: LaunchViewModel = LaunchViewModel()
+    var shipLaunchViewModel: ShipsViewModel = ShipsViewModel()
+    var shipsWithImages: [ShipsQuery.Data.Ship] = []
     
     var carouselCells: [CarouselCell] = [
         CarouselCell(title: "Falcon 1 Rocket", subtitle: "Kennedy Space Center Launch Complex", image: UIImage(named: "Falcon1")!),
@@ -48,6 +52,7 @@ class FeaturedViewController: UIViewController{
         featuredCollectionView.dataSource = self
         featuredCollectionView.delegate = self
         
+        shipsWithImages = appDelegate.shipsViewModel.getShipsWithImages()
     }
     
     private func registerHeader(){
@@ -219,6 +224,8 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
                 let rockets = appDelegate.rocketViewModel.rocketsList
                 let rocketName = rockets[indexPath.item].name
                 
+                let shipsWithImages = appDelegate.shipsViewModel.getShipsWithImages()
+               
                 let featuredHeaderSubtitle: UILabel = UILabel(frame: cell.frame)
                 
                 featuredHeaderSubtitle.textAlignment = .center
@@ -231,28 +238,27 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
                 
                 //Rockets section
                 if indexPath.section == 1 {
-                    cell.rocketImage.alpha = 1
-                    cell.rocketLabel.text = rocketName
-                    cell.rocketLabel.textColor = .white
+                    
+                    cell.label.text = rocketName
                     
                     switch rocketName {
                     case "Falcon 1":
-                        cell.rocketImage.image = UIImage(named: "Falcon1")
+                        cell.image.image = UIImage(named: "Falcon1")
                     case "Falcon 9":
-                        cell.rocketImage.image = UIImage(named: "Falcon9")
+                        cell.image.image = UIImage(named: "Falcon9")
                     case "Falcon Heavy":
-                        cell.rocketImage.image = UIImage(named: "FalconHeavy")
+                        cell.image.image = UIImage(named: "FalconHeavy")
                     case "Starship":
-                        cell.rocketImage.image = UIImage(named: "Starship")
+                        cell.image.image = UIImage(named: "Starship")
                     default:
-                        cell.rocketImage.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(systemName: "sparkle"))
+                        cell.image.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(systemName: "sparkle"))
                     }
                 
                 }
                 
                 //Ships section
                 if indexPath.section == 2{
-                    //TODO: Create functionality for displaying ships
+                    cell.configureShipCollectionViewCell(item: shipsWithImages[indexPath.item])
                 }
                             
                 return cell
