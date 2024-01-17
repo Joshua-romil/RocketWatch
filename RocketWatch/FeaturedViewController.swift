@@ -81,8 +81,6 @@ class FeaturedViewController: UIViewController{
         let featureSection = NSCollectionLayoutSection(group: featureGroup)
         featureSection.orthogonalScrollingBehavior = .paging
         featureSection.contentInsets.bottom = 20
-        //featureSection.
-    
         
         //Rocket section
         let rocketItemLayoutSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(230))
