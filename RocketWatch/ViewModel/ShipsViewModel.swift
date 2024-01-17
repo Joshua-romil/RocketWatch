@@ -56,7 +56,6 @@ class ShipsViewModel{
             }
             shipsWithImages.append(ship)
         }
-        print(shipsWithImages.count)
         return shipsWithImages
     }
     

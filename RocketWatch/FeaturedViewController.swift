@@ -41,7 +41,6 @@ class FeaturedViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Anropa createLayout() bara om du vill använda orginalet
         featuredCollectionView.collectionViewLayout = createLayout()
         
         registerHeader()
@@ -183,6 +182,11 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
             return 4
         }
         
+        //Ships section
+        if section == 2 {
+            return shipsWithImages.count
+        }
+        
         return 4
     }
     
@@ -190,13 +194,15 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         return 3
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell 
+    {
         
         //Carousel section
         if indexPath.section == 0
         {
             
-            if let carouselCell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as? FeaturedCarouselCollectionViewCell{
+            if let carouselCell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as? FeaturedCarouselCollectionViewCell
+            {
                 
                 carouselCell.carouselImage.alpha = 0.3
                 
@@ -217,52 +223,55 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
                 return carouselCell
             }
         }
-        else //Rockets + ships section
+        else if indexPath.section == 1 //Rockets section
         {
-            if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell{
+            if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell
+            {
                 
                 let rockets = appDelegate.rocketViewModel.rocketsList
                 let rocketName = rockets[indexPath.item].name
                 
-                let shipsWithImages = appDelegate.shipsViewModel.getShipsWithImages()
-               
                 let featuredHeaderSubtitle: UILabel = UILabel(frame: cell.frame)
                 
                 featuredHeaderSubtitle.textAlignment = .center
                 featuredHeaderSubtitle.textColor = .white
                 
-                if indexPath.section != 0{
-                    cell.layer.cornerRadius = 16
-                    cell.clipsToBounds = true
+                cell.layer.cornerRadius = 16
+                cell.clipsToBounds = true
+                
+                cell.label.text = rocketName
+                
+                switch rocketName 
+                {
+                case "Falcon 1":
+                    cell.image.image = UIImage(named: "Falcon1")
+                case "Falcon 9":
+                    cell.image.image = UIImage(named: "Falcon9")
+                case "Falcon Heavy":
+                    cell.image.image = UIImage(named: "FalconHeavy")
+                case "Starship":
+                    cell.image.image = UIImage(named: "Starship")
+                default:
+                    cell.image.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(systemName: "sparkle"))
                 }
                 
-                //Rockets section
-                if indexPath.section == 1 {
-                    
-                    cell.label.text = rocketName
-                    
-                    switch rocketName {
-                    case "Falcon 1":
-                        cell.image.image = UIImage(named: "Falcon1")
-                    case "Falcon 9":
-                        cell.image.image = UIImage(named: "Falcon9")
-                    case "Falcon Heavy":
-                        cell.image.image = UIImage(named: "FalconHeavy")
-                    case "Starship":
-                        cell.image.image = UIImage(named: "Starship")
-                    default:
-                        cell.image.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(systemName: "sparkle"))
-                    }
-                
-                }
-                
-                //Ships section
-                if indexPath.section == 2{
-                    cell.configureShipCollectionViewCell(item: shipsWithImages[indexPath.item])
-                }
-                            
                 return cell
             }
+        } else if indexPath.section == 2 //Ships section
+        {
+            
+            if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell
+            {
+                
+                let shipsWithImages = appDelegate.shipsViewModel.getShipsWithImages()
+                
+                cell.configureShipCollectionViewCell(item: shipsWithImages[indexPath.item])
+                cell.layer.cornerRadius = 16
+                cell.clipsToBounds = true
+                
+                return cell
+            }
+            
         }
         
         return UICollectionViewCell()
@@ -272,7 +281,6 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
                 
         if kind == Self.headerIdentifier{
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: Self.headerIdentifier, withReuseIdentifier: Self.headerIdentifier, for: indexPath) as! FeaturedLaunchesHeaderView
-            print(indexPath.section)
             
             if indexPath.section == 1 {
                 header.titleLabel.text = "Rockets"
