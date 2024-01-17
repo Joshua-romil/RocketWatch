@@ -46,4 +46,17 @@ class ShipsViewModel{
             
     }
     
+    func getShipsWithImages() -> [ShipsQuery.Data.Ship]{
+        
+        var shipsWithImages: [ShipsQuery.Data.Ship] = []
+        
+        for ship in shipsList{
+            if ship.image == nil{
+                continue;
+            }
+            shipsWithImages.append(ship)
+        }
+        return shipsWithImages
+    }
+    
 }
