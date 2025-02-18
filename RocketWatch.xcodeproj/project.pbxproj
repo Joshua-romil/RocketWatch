@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0308033B2D4E85FE00421600 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308033A2D4E85FE00421600 /* DetailViewController.swift */; };
+		0308033E2D64C72900421600 /* AboutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308033C2D64C72900421600 /* AboutCollectionViewCell.swift */; };
+		0308033F2D64C72900421600 /* AboutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0308033D2D64C72900421600 /* AboutCollectionViewCell.xib */; };
+		030803422D64D1C300421600 /* KeyFactsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030803402D64D1C300421600 /* KeyFactsCollectionViewCell.swift */; };
+		030803432D64D1C300421600 /* KeyFactsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030803412D64D1C300421600 /* KeyFactsCollectionViewCell.xib */; };
 		031659BC29375DD1003B48FC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031659BB29375DD1003B48FC /* AppDelegate.swift */; };
 		031659BE29375DD1003B48FC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031659BD29375DD1003B48FC /* SceneDelegate.swift */; };
 		031659C029375DD1003B48FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031659BF29375DD1003B48FC /* ViewController.swift */; };
@@ -42,6 +47,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0308033A2D4E85FE00421600 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0308033C2D64C72900421600 /* AboutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCollectionViewCell.swift; sourceTree = "<group>"; };
+		0308033D2D64C72900421600 /* AboutCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutCollectionViewCell.xib; sourceTree = "<group>"; };
+		030803402D64D1C300421600 /* KeyFactsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyFactsCollectionViewCell.swift; sourceTree = "<group>"; };
+		030803412D64D1C300421600 /* KeyFactsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyFactsCollectionViewCell.xib; sourceTree = "<group>"; };
 		031659B829375DD1003B48FC /* RocketWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RocketWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		031659BB29375DD1003B48FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		031659BD29375DD1003B48FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +133,7 @@
 				03623C8B297844650026E2B6 /* FeaturedViewController.swift */,
 				03F81D01294874FD00489C70 /* WebViewController.swift */,
 				032C72AE2969A38500E517FC /* SplashViewController.swift */,
+				0308033A2D4E85FE00421600 /* DetailViewController.swift */,
 				0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */,
 				03F81D032948758000489C70 /* WebStoryboard.storyboard */,
 				031659C129375DD1003B48FC /* Main.storyboard */,
@@ -154,6 +165,10 @@
 				0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */,
 				039610092B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.swift */,
 				0396100A2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib */,
+				0308033C2D64C72900421600 /* AboutCollectionViewCell.swift */,
+				0308033D2D64C72900421600 /* AboutCollectionViewCell.xib */,
+				030803402D64D1C300421600 /* KeyFactsCollectionViewCell.swift */,
+				030803412D64D1C300421600 /* KeyFactsCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,7 +283,9 @@
 				0363E8F72937AF3500B5F96C /* schema.json in Resources */,
 				037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */,
 				03FF3348298160100068DC34 /* FeaturedCollectionViewCell.xib in Resources */,
+				030803432D64D1C300421600 /* KeyFactsCollectionViewCell.xib in Resources */,
 				031659DD29377F2E003B48FC /* LaunchList.graphql in Resources */,
+				0308033F2D64C72900421600 /* AboutCollectionViewCell.xib in Resources */,
 				03480EC52B3116AC00C7F77F /* Ships.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,11 +357,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0308033B2D4E85FE00421600 /* DetailViewController.swift in Sources */,
 				031659C029375DD1003B48FC /* ViewController.swift in Sources */,
 				031659DB29377F01003B48FC /* LaunchList.swift in Sources */,
 				0371E1592AC72DE900585778 /* PagingSectionFooterView.swift in Sources */,
 				031659D929377EEB003B48FC /* ApolloNetworkHelper.swift in Sources */,
 				037AC8482A65C30A00495F9C /* Rockets.swift in Sources */,
+				0308033E2D64C72900421600 /* AboutCollectionViewCell.swift in Sources */,
 				0396100E2B2DF26E0097FCE5 /* ShipsViewModel.swift in Sources */,
 				032C72AF2969A38500E517FC /* SplashViewController.swift in Sources */,
 				03CFCA2829E0386000CB9FED /* FeaturedLaunchesHeaderView.swift in Sources */,
@@ -356,6 +375,7 @@
 				0371E15B2AC87C4A00585778 /* FeaturedHeaderPageControl.swift in Sources */,
 				031659BE29375DD1003B48FC /* SceneDelegate.swift in Sources */,
 				031659D029377DEB003B48FC /* LaunchViewModel.swift in Sources */,
+				030803422D64D1C300421600 /* KeyFactsCollectionViewCell.swift in Sources */,
 				03CFCA2D29E03A9600CB9FED /* FeaturedLaunch.swift in Sources */,
 				03480EC32B3113AE00C7F77F /* Ships.swift in Sources */,
 				0396100B2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.swift in Sources */,
