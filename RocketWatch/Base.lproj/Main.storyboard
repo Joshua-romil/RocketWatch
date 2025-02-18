@@ -41,7 +41,7 @@
             </objects>
             <point key="canvasLocation" x="-2759" y="104"/>
         </scene>
-        <!--Item 2-->
+        <!--Gallery-->
         <scene sceneID="Yld-nz-pcO">
             <objects>
                 <viewController id="8iT-F3-hKg" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                             <constraint firstItem="rkA-BE-c2I" firstAttribute="centerY" secondItem="Hca-Wo-8Xc" secondAttribute="centerY" id="lJZ-qy-i6B"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="xyk-fm-uTZ"/>
+                    <tabBarItem key="tabBarItem" title="Gallery" image="photo.fill" catalog="system" id="xyk-fm-uTZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSw-Qt-IhE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -126,11 +126,55 @@
                     <tabBarItem key="tabBarItem" title="Featured" image="star" catalog="system" selectedImage="star.fill" id="h1o-aZ-cUF"/>
                     <connections>
                         <outlet property="featuredCollectionView" destination="S0L-6k-1B6" id="z7c-vG-gXu"/>
+                        <segue destination="mDg-iB-txT" kind="show" identifier="ShowDetailSegue" id="qiI-7b-z9R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiu-J4-gyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="873.88392857142856"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="XUh-h3-ckr">
+            <objects>
+                <viewController id="mDg-iB-txT" customClass="DetailViewController" customModule="RocketWatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uq6-6E-7aK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-v9-Gym">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8F9-yG-wJN">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ulX-Ql-6eg">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="x77-xy-jML"/>
+                        <color key="backgroundColor" systemColor="separatorColor"/>
+                        <constraints>
+                            <constraint firstItem="SVY-v9-Gym" firstAttribute="top" secondItem="x77-xy-jML" secondAttribute="top" id="01i-xS-GVV"/>
+                            <constraint firstItem="x77-xy-jML" firstAttribute="bottom" secondItem="SVY-v9-Gym" secondAttribute="bottom" id="NRx-Tc-OMQ"/>
+                            <constraint firstItem="x77-xy-jML" firstAttribute="trailing" secondItem="SVY-v9-Gym" secondAttribute="trailing" id="iZ5-XU-NK9"/>
+                            <constraint firstItem="SVY-v9-Gym" firstAttribute="leading" secondItem="x77-xy-jML" secondAttribute="leading" id="zjJ-Mi-LOe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qae-sM-SOr"/>
+                    <connections>
+                        <outlet property="detailCollectionView" destination="8F9-yG-wJN" id="ixm-bX-f7k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9f0-9N-xpb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1659" y="874"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7Dq-XA-Dfa">
@@ -220,8 +264,8 @@
                             <constraint firstItem="lCN-8f-52f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="cRu-dt-6Rd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Launches" selectedImage="moon.stars.fill" catalog="system" id="d03-UR-p9a">
-                        <imageReference key="image" image="moon.stars" catalog="system" symbolScale="large"/>
+                    <tabBarItem key="tabBarItem" title="Launches" id="d03-UR-p9a">
+                        <imageReference key="image" image="tv" catalog="system" symbolScale="large"/>
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <connections>
@@ -237,10 +281,10 @@
     </scenes>
     <resources>
         <image name="logo" width="341" height="341"/>
-        <image name="moon.stars" catalog="system" width="125" height="128"/>
-        <image name="moon.stars.fill" catalog="system" width="125" height="128"/>
+        <image name="photo.fill" catalog="system" width="128" height="93"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="tv" catalog="system" width="128" height="95"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -249,6 +293,9 @@
         </systemColor>
         <systemColor name="separatorColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

@@ -25,6 +25,8 @@ class FeaturedViewController: UIViewController{
     var shipLaunchViewModel: ShipsViewModel = ShipsViewModel()
     var shipsWithImages: [ShipsQuery.Data.Ship] = []
     
+    //carouselCells should be updated in the future to contain dynamic content fetched from the X API
+    //so each cell displays content from SpaceX posts
     var carouselCells: [CarouselCell] = [
         CarouselCell(title: "Falcon 1 Rocket", subtitle: "Kennedy Space Center Launch Complex", image: UIImage(named: "Falcon1")!),
         CarouselCell(title: "Falcon 9 Rocket", subtitle: "Testing purpose", image: UIImage(named: "Falcon9")!),
@@ -126,6 +128,14 @@ class FeaturedViewController: UIViewController{
         return layout
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowDetailSegue"{
+            let detailVC = segue.destination as? DetailViewController
+            let indexPath = featuredCollectionView.indexPathsForSelectedItems?.first
+            //detailVC.rocket = appDelegate.rocketViewModel.rocketsList[indexPath.item]
+        }
+    }
+    
     //An experimental function based on the youtube-video iOS 13 Compositional Layout Food Delivery Layout
     private func createLayout2() -> UICollectionViewCompositionalLayout{
         
@@ -168,6 +178,18 @@ class FeaturedViewController: UIViewController{
 
 extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDelegate{
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.section == 1{
+            let rockets = appDelegate.rocketViewModel.rocketsList
+            let selectedRocket = rockets[indexPath.item]
+            performSegue(withIdentifier: "ShowDetailSegue", sender: self)
+        } else if indexPath.section == 2 {
+            print("You clicked on a ship")
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         //Featured header section
@@ -177,7 +199,7 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         
         //Rockets section
         if section == 1 {
-            return 4
+            return 4 //The current number of rockets spacex has, should be updated to dynamic code instead
         }
         
         //Ships section
