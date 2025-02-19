@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
         registerCarouselCell()
         registerAboutCell()
         registerKeyFactsCell()
+        registerPicturesHeader()
         
         detailCollectionView.dataSource = self
         detailCollectionView.delegate = self
@@ -34,7 +35,6 @@ class DetailViewController: UIViewController {
     
 
     private func registerCarouselCell(){
-
         self.detailCollectionView.register(UINib(nibName: "FeaturedCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeaturedCarouselCollectionViewCell")
     }
     
@@ -44,6 +44,10 @@ class DetailViewController: UIViewController {
     
     private func registerKeyFactsCell(){
         self.detailCollectionView.register(UINib(nibName: "KeyFactsCollectionViewCell", bundle: nil),forCellWithReuseIdentifier: "KeyFactsCollectionViewCell")
+    }
+    
+    private func registerPicturesHeader(){
+        self.detailCollectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -134,31 +138,37 @@ class DetailViewController: UIViewController {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 20, trailing: 16)
         
         return section
     }
     
     private func createPicturesSection() -> NSCollectionLayoutSection {
-        // 1) Item
         let itemSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(100),
-            heightDimension: .absolute(100)
-        )
+            widthDimension: .fractionalWidth(0.5), // Adjusted to fit 2 items in a row
+            heightDimension: .fractionalWidth(0.5))
+    
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        // 2) Group
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
+    
+        // 2) Group (2 items per row)
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(100),
-            heightDimension: .absolute(100)
-        )
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .fractionalWidth(0.5) // Same height as item for proper alignment
+            )
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item, item])
+
         // 3) Section
         let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .continuous
         section.interGroupSpacing = 10
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 20, trailing: 16)
+        
+        //Label over section
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
+        
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .topLeading)
+        
+        section.boundarySupplementaryItems = [header]
         
         return section
     }
@@ -195,29 +205,48 @@ extension DetailViewController: UICollectionViewDataSource,UICollectionViewDeleg
             
             return keyFactsCell
             
-        default:
+        case 3:
             let carouselCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as! FeaturedCarouselCollectionViewCell
             carouselCell.carouselImage.image = UIImage(named: "Falcon1")
+            carouselCell.title.isHidden = true
+            carouselCell.subtitle.isHidden = true
+            carouselCell.layer.cornerRadius = 8
+            return carouselCell
+            
+        default:
+            //this will be replaced anyway
+            let carouselCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as! FeaturedCarouselCollectionViewCell
+            carouselCell.carouselImage.image = UIImage(named: "Falcon1")
+            carouselCell.title.text = "hello world"
+            carouselCell.subtitle.text = "hello world"
             return carouselCell
         }
-        
-        let carouselCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as! FeaturedCarouselCollectionViewCell
-        carouselCell.carouselImage.image = UIImage(named: "Falcon1")
-        return carouselCell
-        
-//        if indexPath.section == 0{
-//            
-//        }
-        
-//        if let carouselCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as? FeaturedCarouselCollectionViewCell{
-//            
-//            carouselCell.carouselImage.image = UIImage(named: "Falcon1")
-//            
-//            return carouselCell
-//        }
         
         
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+                let headerView = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: "HeaderView",
+                    for: indexPath
+                )
+                
+                if indexPath.section == 3 { // Pictures section
+                    let label = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.width - 32, height: 50))
+                    label.text = "Pictures"
+                    label.font = UIFont.systemFont(ofSize: 17, weight: .bold)
+                    label.textColor = .white
+                    
+                    headerView.subviews.forEach { $0.removeFromSuperview() } // Clear previous labels
+                    headerView.addSubview(label)
+                }
+                
+                return headerView
+            }
+            
+            return UICollectionReusableView()
+    }
 }

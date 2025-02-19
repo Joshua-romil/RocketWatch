@@ -39,11 +39,13 @@ class KeyFactsCollectionViewCell: UICollectionViewCell {
         
         let fieldLabel = UILabel()
         fieldLabel.text = "\(field):"
+        fieldLabel.textColor = .white
         fieldLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         let factLabel = UILabel()
         factLabel.text = fact
         factLabel.numberOfLines = 0
+        factLabel.textColor = .white
         factLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
 
         factView.addArrangedSubview(fieldLabel)

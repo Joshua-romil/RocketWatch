@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="873.88392857142856"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Falcon 9-->
         <scene sceneID="XUh-h3-ckr">
             <objects>
-                <viewController id="mDg-iB-txT" customClass="DetailViewController" customModule="RocketWatch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Falcon 9" id="mDg-iB-txT" customClass="DetailViewController" customModule="RocketWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uq6-6E-7aK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8F9-yG-wJN">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ulX-Ql-6eg">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -156,10 +156,11 @@
                                         <cells/>
                                     </collectionView>
                                 </subviews>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="x77-xy-jML"/>
-                        <color key="backgroundColor" systemColor="separatorColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SVY-v9-Gym" firstAttribute="top" secondItem="x77-xy-jML" secondAttribute="top" id="01i-xS-GVV"/>
                             <constraint firstItem="x77-xy-jML" firstAttribute="bottom" secondItem="SVY-v9-Gym" secondAttribute="bottom" id="NRx-Tc-OMQ"/>
@@ -289,13 +290,10 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="separatorColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
