@@ -43,7 +43,9 @@
 		03F81D052949FE8A00489C70 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F81D01294874FD00489C70 /* WebViewController.swift */; };
 		03FF334629812B480068DC34 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FF334529812B480068DC34 /* FeaturedCollectionViewCell.swift */; };
 		03FF3348298160100068DC34 /* FeaturedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03FF3347298160100068DC34 /* FeaturedCollectionViewCell.xib */; };
-		94495EB6CF80F3EDFDC4578C /* Pods_RocketWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 874D8475385B9651D4C0D958 /* Pods_RocketWatch.framework */; };
+		E428DB8F2D694F690007B5A7 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = E428DB8E2D694F690007B5A7 /* Apollo */; };
+		E428DB962D694FAA0007B5A7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E428DB952D694FAA0007B5A7 /* SDWebImage */; };
+		E428DB992D69502A0007B5A7 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = E428DB982D69502A0007B5A7 /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,9 +87,6 @@
 		03F81D032948758000489C70 /* WebStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebStoryboard.storyboard; sourceTree = "<group>"; };
 		03FF334529812B480068DC34 /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
 		03FF3347298160100068DC34 /* FeaturedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedCollectionViewCell.xib; sourceTree = "<group>"; };
-		6740A71B2FB9576733F769A6 /* Pods-RocketWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketWatch.debug.xcconfig"; path = "Target Support Files/Pods-RocketWatch/Pods-RocketWatch.debug.xcconfig"; sourceTree = "<group>"; };
-		874D8475385B9651D4C0D958 /* Pods_RocketWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RocketWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DBFB765E1827CB6582207565 /* Pods-RocketWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RocketWatch.release.xcconfig"; path = "Target Support Files/Pods-RocketWatch/Pods-RocketWatch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +94,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94495EB6CF80F3EDFDC4578C /* Pods_RocketWatch.framework in Frameworks */,
+				E428DB992D69502A0007B5A7 /* Apollo in Frameworks */,
+				E428DB8F2D694F690007B5A7 /* Apollo in Frameworks */,
+				E428DB962D694FAA0007B5A7 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,8 +108,6 @@
 			children = (
 				031659BA29375DD1003B48FC /* RocketWatch */,
 				031659B929375DD1003B48FC /* Products */,
-				D16EB2EAEE723652BB8207B2 /* Pods */,
-				7454DF0B6960C67E34CCD494 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,23 +195,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7454DF0B6960C67E34CCD494 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				874D8475385B9651D4C0D958 /* Pods_RocketWatch.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D16EB2EAEE723652BB8207B2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6740A71B2FB9576733F769A6 /* Pods-RocketWatch.debug.xcconfig */,
-				DBFB765E1827CB6582207565 /* Pods-RocketWatch.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,12 +202,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 031659CC29375DD2003B48FC /* Build configuration list for PBXNativeTarget "RocketWatch" */;
 			buildPhases = (
-				056534727E8F06D37680DE1A /* [CP] Check Pods Manifest.lock */,
-				0363E8F82937AFAD00B5F96C /* Apollo */,
 				031659B429375DD1003B48FC /* Sources */,
 				031659B529375DD1003B48FC /* Frameworks */,
 				031659B629375DD1003B48FC /* Resources */,
-				DCD8EC5CCC734EB2D3E27C74 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,7 +223,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					031659B729375DD1003B48FC = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -260,6 +239,10 @@
 				Base,
 			);
 			mainGroup = 031659AF29375DD1003B48FC;
+			packageReferences = (
+				E428DB942D694FAA0007B5A7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				E428DB972D69502A0007B5A7 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 031659B929375DD1003B48FC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -291,66 +274,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0363E8F82937AFAD00B5F96C /* Apollo */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Apollo;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Don't run this during index builds\nif [ $ACTION = \"indexbuild\" ]; then exit 0; fi\nSCRIPT_PATH=\"${PODS_ROOT}/Apollo/scripts\"\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*LaunchList.graphql --localSchemaFile=\"schema.json\" LaunchList.swift\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*Rockets.graphql --localSchemaFile=\"schema.json\" Rockets.swift\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*Ships.graphql --localSchemaFile=\"schema.json\" Ships.swift\n\n\n\n";
-		};
-		056534727E8F06D37680DE1A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RocketWatch-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DCD8EC5CCC734EB2D3E27C74 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RocketWatch/Pods-RocketWatch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RocketWatch/Pods-RocketWatch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RocketWatch/Pods-RocketWatch-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		031659B429375DD1003B48FC /* Sources */ = {
@@ -441,6 +364,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -501,6 +425,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -521,7 +446,6 @@
 		};
 		031659CD29375DD2003B48FC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6740A71B2FB9576733F769A6 /* Pods-RocketWatch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -553,7 +477,6 @@
 		};
 		031659CE29375DD2003B48FC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DBFB765E1827CB6582207565 /* Pods-RocketWatch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -605,6 +528,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E428DB8D2D694F690007B5A7 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.18.0;
+			};
+		};
+		E428DB942D694FAA0007B5A7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.20.1;
+			};
+		};
+		E428DB972D69502A0007B5A7 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.39.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E428DB8E2D694F690007B5A7 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E428DB8D2D694F690007B5A7 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+		E428DB952D694FAA0007B5A7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E428DB942D694FAA0007B5A7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		E428DB982D69502A0007B5A7 /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E428DB972D69502A0007B5A7 /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 031659B029375DD1003B48FC /* Project object */;
 }
