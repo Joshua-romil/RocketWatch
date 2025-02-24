@@ -23,7 +23,11 @@ class DetailViewController: UIViewController {
         
         detailCollectionView.collectionViewLayout = createLayout()
         
+        self.navigationItem.title = "Falcon 9"
+        self.navigationItem.backButtonTitle = "Back"
+        
         registerCarouselCell()
+        registerStatusIndicatorCell()
         registerAboutCell()
         registerKeyFactsCell()
         registerPicturesHeader()
@@ -33,9 +37,18 @@ class DetailViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
 
     private func registerCarouselCell(){
         self.detailCollectionView.register(UINib(nibName: "FeaturedCarouselCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "FeaturedCarouselCollectionViewCell")
+    }
+    
+    private func registerStatusIndicatorCell(){
+        self.detailCollectionView.register(UINib(nibName: "StatusIndicatorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "StatusIndicatorCollectionViewCell")
     }
     
     private func registerAboutCell(){
@@ -51,18 +64,20 @@ class DetailViewController: UIViewController {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4 // Hero, About, Key Facts, Pictures
+        return 5 // Hero, Status indicator, About, Key Facts, Pictures
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0: // Hero
             return 1
-        case 1: // About
+        case 1: // Status indicator
             return 1
-        case 2: // Key Facts
+        case 2: // About
             return 1
-        case 3: // Pictures
+        case 3: // Key Facts
+            return 1
+        case 4:
             return 4 // However many pictures you have
         default:
             return 0
@@ -76,13 +91,16 @@ class DetailViewController: UIViewController {
                     // Hero section
                     return self.createHeroSection()
                 case 1:
+                    // Status section
+                    return self.createStatusIndicatorSection()
+                case 2:
                     // About section
                     return self.createAboutSection()
-                case 2:
-                    // Key Facts
-                    return self.createKeyFactsSection()
                 case 3:
-                    // Pictures gallery
+                    // Key facts section
+                    return self.createKeyFactsSection()
+                case 4:
+                    // Pictures section
                     return self.createPicturesSection()
                 default:
                     return nil
@@ -102,6 +120,24 @@ class DetailViewController: UIViewController {
         featureSection.contentInsets.bottom = 20
         
         return featureSection
+    }
+    
+    private func createStatusIndicatorSection() -> NSCollectionLayoutSection{
+        let itemSize = NSCollectionLayoutSize( widthDimension: .absolute(115), heightDimension: .absolute(25))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(115),
+            heightDimension: .absolute(25)
+        )
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 20, trailing: 16)
+        
+        return section
     }
     
     private func createAboutSection() -> NSCollectionLayoutSection {
@@ -187,9 +223,12 @@ extension DetailViewController: UICollectionViewDataSource,UICollectionViewDeleg
             carouselCell.subtitle.isHidden = true
             return carouselCell
         case 1:
+            let statusCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "StatusIndicatorCollectionViewCell", for: indexPath) as! StatusIndicatorCollectionViewCell
+            return statusCell
+        case 2:
             let aboutCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "AboutCollectionViewCell", for: indexPath) as! AboutCollectionViewCell
             return aboutCell
-        case 2:
+        case 3:
             let keyFactsCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "KeyFactsCollectionViewCell", for: indexPath) as! KeyFactsCollectionViewCell
             
             let keyFacts: [(field: String, fact: String)] = [
@@ -204,8 +243,7 @@ extension DetailViewController: UICollectionViewDataSource,UICollectionViewDeleg
             keyFactsCell.configure(with: keyFacts)
             
             return keyFactsCell
-            
-        case 3:
+        case 4:
             let carouselCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as! FeaturedCarouselCollectionViewCell
             carouselCell.carouselImage.image = UIImage(named: "Falcon1")
             carouselCell.title.isHidden = true
@@ -234,7 +272,7 @@ extension DetailViewController: UICollectionViewDataSource,UICollectionViewDeleg
                     for: indexPath
                 )
                 
-                if indexPath.section == 3 { // Pictures section
+                if indexPath.section == 4 { // Pictures section
                     let label = UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.width - 32, height: 50))
                     label.text = "Pictures"
                     label.font = UIFont.systemFont(ofSize: 17, weight: .bold)

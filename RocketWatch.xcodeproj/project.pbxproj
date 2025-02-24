@@ -29,6 +29,8 @@
 		03480EC52B3116AC00C7F77F /* Ships.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 03480EC42B3116AC00C7F77F /* Ships.graphql */; };
 		03623C8C297844650026E2B6 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03623C8B297844650026E2B6 /* FeaturedViewController.swift */; };
 		0363E8F72937AF3500B5F96C /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 0363E8F62937AF3500B5F96C /* schema.json */; };
+		036404C22D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */; };
+		036404C32D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036404C12D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib */; };
 		0371E1592AC72DE900585778 /* PagingSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */; };
 		0371E15B2AC87C4A00585778 /* FeaturedHeaderPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */; };
 		037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 037AC8452A65C02F00495F9C /* Rockets.graphql */; };
@@ -73,6 +75,8 @@
 		03480EC42B3116AC00C7F77F /* Ships.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Ships.graphql; sourceTree = "<group>"; };
 		03623C8B297844650026E2B6 /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		0363E8F62937AF3500B5F96C /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusIndicatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		036404C12D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusIndicatorCollectionViewCell.xib; sourceTree = "<group>"; };
 		0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingSectionFooterView.swift; sourceTree = "<group>"; };
 		0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedHeaderPageControl.swift; sourceTree = "<group>"; };
 		037AC8452A65C02F00495F9C /* Rockets.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rockets.graphql; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				0308033D2D64C72900421600 /* AboutCollectionViewCell.xib */,
 				030803402D64D1C300421600 /* KeyFactsCollectionViewCell.swift */,
 				030803412D64D1C300421600 /* KeyFactsCollectionViewCell.xib */,
+				036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */,
+				036404C12D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +273,7 @@
 				037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */,
 				03FF3348298160100068DC34 /* FeaturedCollectionViewCell.xib in Resources */,
 				030803432D64D1C300421600 /* KeyFactsCollectionViewCell.xib in Resources */,
+				036404C32D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib in Resources */,
 				031659DD29377F2E003B48FC /* LaunchList.graphql in Resources */,
 				0308033F2D64C72900421600 /* AboutCollectionViewCell.xib in Resources */,
 				03480EC52B3116AC00C7F77F /* Ships.graphql in Resources */,
@@ -282,6 +289,7 @@
 			files = (
 				0308033B2D4E85FE00421600 /* DetailViewController.swift in Sources */,
 				031659C029375DD1003B48FC /* ViewController.swift in Sources */,
+				036404C22D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift in Sources */,
 				031659DB29377F01003B48FC /* LaunchList.swift in Sources */,
 				0371E1592AC72DE900585778 /* PagingSectionFooterView.swift in Sources */,
 				031659D929377EEB003B48FC /* ApolloNetworkHelper.swift in Sources */,
