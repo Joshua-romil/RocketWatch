@@ -72,27 +72,16 @@
         <!--Featured-->
         <scene sceneID="c5e-6U-4sW">
             <objects>
-                <viewController id="QTo-Mq-TdB" customClass="FeaturedViewController" customModule="RocketWatch" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QNN-UK-qtW">
+                <viewController title="Featured" id="QTo-Mq-TdB" customClass="FeaturedViewController" customModule="RocketWatch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="QNN-UK-qtW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v8G-UU-3MD">
-                                <rect key="frame" x="8" y="0.0" width="398" height="765"/>
+                                <rect key="frame" x="8" y="44" width="398" height="765"/>
                                 <subviews>
-                                    <navigationBar contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="lfr-5M-Ixn">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="44"/>
-                                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <textAttributes key="titleTextAttributes">
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </textAttributes>
-                                        <items>
-                                            <navigationItem title="Featured" id="Ae1-qF-XnO"/>
-                                        </items>
-                                    </navigationBar>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="S0L-6k-1B6">
-                                        <rect key="frame" x="0.0" y="44" width="398" height="721"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="765"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4ZW-dE-VIX">
@@ -109,9 +98,6 @@
                                     </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="labelColor"/>
-                                <constraints>
-                                    <constraint firstItem="S0L-6k-1B6" firstAttribute="top" secondItem="lfr-5M-Ixn" secondAttribute="bottom" id="1hI-1w-suU"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Zyj-X7-xeN"/>
@@ -123,7 +109,7 @@
                             <constraint firstItem="Zyj-X7-xeN" firstAttribute="trailing" secondItem="v8G-UU-3MD" secondAttribute="trailing" constant="8" id="u1n-hI-CEG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Featured" image="star" catalog="system" selectedImage="star.fill" id="h1o-aZ-cUF"/>
+                    <navigationItem key="navigationItem" id="NqJ-Ps-AQF"/>
                     <connections>
                         <outlet property="featuredCollectionView" destination="S0L-6k-1B6" id="z7c-vG-gXu"/>
                         <segue destination="mDg-iB-txT" kind="show" identifier="ShowDetailSegue" id="qiI-7b-z9R"/>
@@ -131,21 +117,21 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiu-J4-gyC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="873.88392857142856"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="873.88392857142856"/>
         </scene>
         <!--Falcon 9-->
         <scene sceneID="XUh-h3-ckr">
             <objects>
                 <viewController title="Falcon 9" id="mDg-iB-txT" customClass="DetailViewController" customModule="RocketWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uq6-6E-7aK">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-v9-Gym">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="803"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8F9-yG-wJN">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="803"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ulX-Ql-6eg">
                                             <size key="itemSize" width="128" height="128"/>
@@ -160,7 +146,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="x77-xy-jML"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="separatorColor"/>
                         <constraints>
                             <constraint firstItem="SVY-v9-Gym" firstAttribute="top" secondItem="x77-xy-jML" secondAttribute="top" id="01i-xS-GVV"/>
                             <constraint firstItem="x77-xy-jML" firstAttribute="bottom" secondItem="SVY-v9-Gym" secondAttribute="bottom" id="NRx-Tc-OMQ"/>
@@ -175,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9f0-9N-xpb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659" y="874"/>
+            <point key="canvasLocation" x="2568.1159420289855" y="873.88392857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7Dq-XA-Dfa">
@@ -190,7 +176,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="mYx-JM-tW6"/>
-                        <segue destination="QTo-Mq-TdB" kind="relationship" relationship="viewControllers" id="wPd-Qd-MwM"/>
+                        <segue destination="hkE-l5-Dnw" kind="relationship" relationship="viewControllers" id="wPd-Qd-MwM"/>
                         <segue destination="8iT-F3-hKg" kind="relationship" relationship="viewControllers" id="R2f-iI-gzw"/>
                     </connections>
                 </tabBarController>
@@ -278,6 +264,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="110" y="144"/>
+        </scene>
+        <!--Featured-->
+        <scene sceneID="Icf-Gu-s48">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hkE-l5-Dnw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Featured" image="star" catalog="system" selectedImage="star.fill" id="h1o-aZ-cUF"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Tit-5t-Mwc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QTo-Mq-TdB" kind="relationship" relationship="rootViewController" id="hwz-Pq-SZG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bBn-wT-Wb1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="873.88392857142856"/>
         </scene>
     </scenes>
     <resources>

@@ -45,6 +45,9 @@ class FeaturedViewController: UIViewController{
         
         featuredCollectionView.collectionViewLayout = createLayout()
         
+        self.navigationItem.title = "Featured"
+        self.navigationItem.backButtonTitle = "Back"
+        
         registerHeader()
         registerCell()
         registerPageControl()
