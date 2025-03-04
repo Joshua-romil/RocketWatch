@@ -27,6 +27,8 @@
 		032C72AF2969A38500E517FC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C72AE2969A38500E517FC /* SplashViewController.swift */; };
 		03480EC32B3113AE00C7F77F /* Ships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03480EC22B3113AE00C7F77F /* Ships.swift */; };
 		03480EC52B3116AC00C7F77F /* Ships.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 03480EC42B3116AC00C7F77F /* Ships.graphql */; };
+		034BEC7F2D7641300082755C /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034BEC7D2D7641300082755C /* MapCollectionViewCell.swift */; };
+		034BEC802D7641300082755C /* MapCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034BEC7E2D7641300082755C /* MapCollectionViewCell.xib */; };
 		03623C8C297844650026E2B6 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03623C8B297844650026E2B6 /* FeaturedViewController.swift */; };
 		0363E8F72937AF3500B5F96C /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 0363E8F62937AF3500B5F96C /* schema.json */; };
 		036404C22D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */; };
@@ -73,6 +75,8 @@
 		032C72AE2969A38500E517FC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		03480EC22B3113AE00C7F77F /* Ships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ships.swift; sourceTree = "<group>"; };
 		03480EC42B3116AC00C7F77F /* Ships.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Ships.graphql; sourceTree = "<group>"; };
+		034BEC7D2D7641300082755C /* MapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCell.swift; sourceTree = "<group>"; };
+		034BEC7E2D7641300082755C /* MapCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCollectionViewCell.xib; sourceTree = "<group>"; };
 		03623C8B297844650026E2B6 /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		0363E8F62937AF3500B5F96C /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusIndicatorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				030803412D64D1C300421600 /* KeyFactsCollectionViewCell.xib */,
 				036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */,
 				036404C12D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib */,
+				034BEC7D2D7641300082755C /* MapCollectionViewCell.swift */,
+				034BEC7E2D7641300082755C /* MapCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 				0396100C2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib in Resources */,
 				03F81D042948758000489C70 /* WebStoryboard.storyboard in Resources */,
 				0363E8F72937AF3500B5F96C /* schema.json in Resources */,
+				034BEC802D7641300082755C /* MapCollectionViewCell.xib in Resources */,
 				037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */,
 				03FF3348298160100068DC34 /* FeaturedCollectionViewCell.xib in Resources */,
 				030803432D64D1C300421600 /* KeyFactsCollectionViewCell.xib in Resources */,
@@ -302,6 +309,7 @@
 				03623C8C297844650026E2B6 /* FeaturedViewController.swift in Sources */,
 				037AC84A2A65C84A00495F9C /* RocketsLaunchViewModel.swift in Sources */,
 				031659D529377E74003B48FC /* LaunchTableViewCell.swift in Sources */,
+				034BEC7F2D7641300082755C /* MapCollectionViewCell.swift in Sources */,
 				031659BC29375DD1003B48FC /* AppDelegate.swift in Sources */,
 				0371E15B2AC87C4A00585778 /* FeaturedHeaderPageControl.swift in Sources */,
 				031659BE29375DD1003B48FC /* SceneDelegate.swift in Sources */,

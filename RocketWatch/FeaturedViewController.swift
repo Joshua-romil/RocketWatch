@@ -24,6 +24,7 @@ class FeaturedViewController: UIViewController{
     var launchViewModel: LaunchViewModel = LaunchViewModel()
     var shipLaunchViewModel: ShipsViewModel = ShipsViewModel()
     var shipsWithImages: [ShipsQuery.Data.Ship] = []
+    var selectedDetailType: DetailType?
     
     //carouselCells should be updated in the future to contain dynamic content fetched from the X API
     //so each cell displays content from SpaceX posts
@@ -133,9 +134,9 @@ class FeaturedViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailSegue"{
-            let detailVC = segue.destination as? DetailViewController
-            let indexPath = featuredCollectionView.indexPathsForSelectedItems?.first
-            //detailVC.rocket = appDelegate.rocketViewModel.rocketsList[indexPath.item]
+            if let detailVC = segue.destination as? DetailViewController{
+                detailVC.detailType = selectedDetailType ?? .rocket
+            }
         }
     }
     
@@ -186,9 +187,11 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         if indexPath.section == 1{
             let rockets = appDelegate.rocketViewModel.rocketsList
             let selectedRocket = rockets[indexPath.item]
+            selectedDetailType = .rocket
             performSegue(withIdentifier: "ShowDetailSegue", sender: self)
         } else if indexPath.section == 2 {
-            print("You clicked on a ship")
+            selectedDetailType = .ship
+            performSegue(withIdentifier: "ShowDetailSegue", sender: self)
         }
         
     }
