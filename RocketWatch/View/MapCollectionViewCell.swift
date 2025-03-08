@@ -33,11 +33,10 @@ class MapCollectionViewCell: UICollectionViewCell, MKMapViewDelegate {
         
         //retrieve coordinates from ship object.
         let shipCoordinate = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
-        let region = MKCoordinateRegion(center: shipCoordinate, latitudinalMeters: 5000, longitudinalMeters: 5000)
+        let region = MKCoordinateRegion(center: shipCoordinate, latitudinalMeters: 8000, longitudinalMeters: 8000)
         
         mapView.delegate = self
         mapView.layer.cornerRadius = 5
-        
         
         addShipAnnotation(coordinate: shipCoordinate, region: region)
        
