@@ -15,8 +15,19 @@ protocol ShipViewModelDelegate: AnyObject{
 }
 
 class ShipsViewModel{
-    var shipsList = [ShipsQuery.Data.Ship]()
+    
+    var shipsList = [ShipsQuery.Data.Ship]() //GraphQL ships (based on a different API)
+    var restShipsList = [Ship]() //REST ships
+    
     weak var delegate: ShipViewModelDelegate?
+    
+    private let shipService: ShipServiceProtocol
+    
+    init(shipService: ShipServiceProtocol = ShipService()) {
+        self.shipService = shipService
+    }
+
+    
     
     func fetchShipsList(){
         shipsList.removeAll()
@@ -46,6 +57,19 @@ class ShipsViewModel{
             
     }
     
+    func fetchRestShipsList(){
+        restShipsList.removeAll()
+        Task {
+            do {
+                let ships = try await shipService.getShips()
+                self.restShipsList = ships
+                self.delegate?.didReceiveData()
+            } catch {
+                self.delegate?.didFail(errorMessage: error.localizedDescription)
+            }
+        }
+    }
+    
     func getShipsWithImages() -> [ShipsQuery.Data.Ship]{
         
         var shipsWithImages: [ShipsQuery.Data.Ship] = []
@@ -57,6 +81,10 @@ class ShipsViewModel{
             shipsWithImages.append(ship)
         }
         return shipsWithImages
+    }
+    
+    func getRESTShipsWithImages() -> [Ship] {
+            restShipsList.filter { $0.image != nil }
     }
     
 }

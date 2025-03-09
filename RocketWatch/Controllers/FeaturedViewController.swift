@@ -16,13 +16,13 @@ struct CarouselCell{
 }
  
 class FeaturedViewController: UIViewController{
-
+    
     @IBOutlet weak var featuredCollectionView: UICollectionView!
     
     var dataSource: UICollectionViewDataSource?
     var pageControl: UIPageControl?
     var launchViewModel: LaunchViewModel = LaunchViewModel()
-    var shipLaunchViewModel: ShipsViewModel = ShipsViewModel()
+    var shipsViewModel: ShipsViewModel = ShipsViewModel()
     var shipsWithImages: [ShipsQuery.Data.Ship] = []
     var selectedDetailType: DetailType?
     
@@ -57,7 +57,10 @@ class FeaturedViewController: UIViewController{
         featuredCollectionView.dataSource = self
         featuredCollectionView.delegate = self
         
+        shipsViewModel.delegate = self
+        shipsViewModel.fetchRestShipsList()
         shipsWithImages = appDelegate.shipsViewModel.getShipsWithImages()
+        
     }
     
     private func registerHeader(){
@@ -140,47 +143,11 @@ class FeaturedViewController: UIViewController{
         }
     }
     
-    //An experimental function based on the youtube-video iOS 13 Compositional Layout Food Delivery Layout
-    private func createLayout2() -> UICollectionViewCompositionalLayout{
-        
-        return UICollectionViewCompositionalLayout { sectionNumber, env in
-            
-            if sectionNumber == 0{
-                let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-                item.contentInsets.trailing = 0
-                item.contentInsets.bottom = 16
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)), subitems: [item])
-                let section = NSCollectionLayoutSection(group: group)
-                section.orthogonalScrollingBehavior = .paging
-                return section
-            } else {
-                let rocketItemLayoutSize = NSCollectionLayoutSize(widthDimension: .absolute(200), heightDimension: .absolute(200))
-                let rocketItem = NSCollectionLayoutItem(layoutSize: rocketItemLayoutSize)
-                let rocketGroupLayoutSize = rocketItemLayoutSize
-                let rocketGroup = NSCollectionLayoutGroup.horizontal(layoutSize: rocketGroupLayoutSize, subitems: [rocketItem])
-                let rocketSection = NSCollectionLayoutSection(group: rocketGroup)
-                rocketSection.orthogonalScrollingBehavior = .paging
-                rocketSection.interGroupSpacing = 20
-                rocketSection.contentInsets = .init(top: 10, leading: 10, bottom: 30, trailing: 10)
-                
-                //Label over section
-                let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(40))
-                let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize, elementKind: Self.headerIdentifier, alignment: .top)
-
-                rocketSection.boundarySupplementaryItems = [
-                    sectionHeader
-                ]
-                
-                return rocketSection
-            }
-            
-        }
-    }
-    
 }
 
 
 extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDelegate{
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
@@ -326,4 +293,17 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         return pageControl
 
     }
+}
+
+extension FeaturedViewController: ShipViewModelDelegate{
+    
+    func didReceiveData() {
+        let restShipCount = shipsViewModel.restShipsList.count
+        print("Got \(restShipCount) ships from the REST API!")
+    }
+    
+    func didFail(errorMessage: String) {
+        print("REST API Error: \(errorMessage)")
+    }
+    
 }

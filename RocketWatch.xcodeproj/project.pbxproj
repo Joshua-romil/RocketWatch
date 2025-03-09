@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0305B85F2D7CF43E0054E98C /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305B85E2D7CF43E0054E98C /* Ship.swift */; };
+		0305B8622D7DD3580054E98C /* ShipService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0305B8612D7DD3580054E98C /* ShipService.swift */; };
 		0308033B2D4E85FE00421600 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308033A2D4E85FE00421600 /* DetailViewController.swift */; };
 		0308033E2D64C72900421600 /* AboutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0308033C2D64C72900421600 /* AboutCollectionViewCell.swift */; };
 		0308033F2D64C72900421600 /* AboutCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0308033D2D64C72900421600 /* AboutCollectionViewCell.xib */; };
@@ -33,7 +35,6 @@
 		0363E8F72937AF3500B5F96C /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 0363E8F62937AF3500B5F96C /* schema.json */; };
 		036404C22D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */; };
 		036404C32D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 036404C12D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib */; };
-		0371E1592AC72DE900585778 /* PagingSectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */; };
 		0371E15B2AC87C4A00585778 /* FeaturedHeaderPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */; };
 		037AC8462A65C02F00495F9C /* Rockets.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 037AC8452A65C02F00495F9C /* Rockets.graphql */; };
 		037AC8482A65C30A00495F9C /* Rockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037AC8472A65C30A00495F9C /* Rockets.swift */; };
@@ -53,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0305B85E2D7CF43E0054E98C /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
+		0305B8612D7DD3580054E98C /* ShipService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipService.swift; sourceTree = "<group>"; };
 		0308033A2D4E85FE00421600 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0308033C2D64C72900421600 /* AboutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCollectionViewCell.swift; sourceTree = "<group>"; };
 		0308033D2D64C72900421600 /* AboutCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -81,7 +84,6 @@
 		0363E8F62937AF3500B5F96C /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusIndicatorCollectionViewCell.swift; sourceTree = "<group>"; };
 		036404C12D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusIndicatorCollectionViewCell.xib; sourceTree = "<group>"; };
-		0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingSectionFooterView.swift; sourceTree = "<group>"; };
 		0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedHeaderPageControl.swift; sourceTree = "<group>"; };
 		037AC8452A65C02F00495F9C /* Rockets.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Rockets.graphql; sourceTree = "<group>"; };
 		037AC8472A65C30A00495F9C /* Rockets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rockets.swift; sourceTree = "<group>"; };
@@ -111,6 +113,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0305B8602D7DD3160054E98C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0305B8612D7DD3580054E98C /* ShipService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0305B8632D7DDDD80054E98C /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				031659D429377E74003B48FC /* LaunchTableViewCell.xib */,
+				03FF3347298160100068DC34 /* FeaturedCollectionViewCell.xib */,
+				0396100A2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib */,
+				0308033D2D64C72900421600 /* AboutCollectionViewCell.xib */,
+				030803412D64D1C300421600 /* KeyFactsCollectionViewCell.xib */,
+				036404C12D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib */,
+				034BEC7E2D7641300082755C /* MapCollectionViewCell.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
+		0305B8642D7DDE810054E98C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				031659BF29375DD1003B48FC /* ViewController.swift */,
+				03623C8B297844650026E2B6 /* FeaturedViewController.swift */,
+				03F81D01294874FD00489C70 /* WebViewController.swift */,
+				032C72AE2969A38500E517FC /* SplashViewController.swift */,
+				0308033A2D4E85FE00421600 /* DetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		031659AF29375DD1003B48FC = {
 			isa = PBXGroup;
 			children = (
@@ -130,18 +166,14 @@
 		031659BA29375DD1003B48FC /* RocketWatch */ = {
 			isa = PBXGroup;
 			children = (
+				0305B8642D7DDE810054E98C /* Controllers */,
+				0305B8602D7DD3160054E98C /* Networking */,
 				03CFCA2929E03A0B00CB9FED /* Models */,
 				0363E8FA2937B7AF00B5F96C /* GraphQL */,
-				031659D129377DF7003B48FC /* ViewModel */,
-				031659D229377E0E003B48FC /* View */,
+				031659D129377DF7003B48FC /* ViewModels */,
+				031659D229377E0E003B48FC /* Views */,
 				031659BB29375DD1003B48FC /* AppDelegate.swift */,
 				031659BD29375DD1003B48FC /* SceneDelegate.swift */,
-				031659BF29375DD1003B48FC /* ViewController.swift */,
-				03623C8B297844650026E2B6 /* FeaturedViewController.swift */,
-				03F81D01294874FD00489C70 /* WebViewController.swift */,
-				032C72AE2969A38500E517FC /* SplashViewController.swift */,
-				0308033A2D4E85FE00421600 /* DetailViewController.swift */,
-				0371E1582AC72DE900585778 /* PagingSectionFooterView.swift */,
 				03F81D032948758000489C70 /* WebStoryboard.storyboard */,
 				031659C129375DD1003B48FC /* Main.storyboard */,
 				031659C429375DD2003B48FC /* Assets.xcassets */,
@@ -151,37 +183,31 @@
 			path = RocketWatch;
 			sourceTree = "<group>";
 		};
-		031659D129377DF7003B48FC /* ViewModel */ = {
+		031659D129377DF7003B48FC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				031659CF29377DEB003B48FC /* LaunchViewModel.swift */,
 				037AC8492A65C84A00495F9C /* RocketsLaunchViewModel.swift */,
 				0396100D2B2DF26E0097FCE5 /* ShipsViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		031659D229377E0E003B48FC /* View */ = {
+		031659D229377E0E003B48FC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0305B8632D7DDDD80054E98C /* XIBs */,
 				031659D329377E74003B48FC /* LaunchTableViewCell.swift */,
-				031659D429377E74003B48FC /* LaunchTableViewCell.xib */,
 				03FF334529812B480068DC34 /* FeaturedCollectionViewCell.swift */,
-				03FF3347298160100068DC34 /* FeaturedCollectionViewCell.xib */,
 				03CFCA2729E0386000CB9FED /* FeaturedLaunchesHeaderView.swift */,
 				0371E15A2AC87C4A00585778 /* FeaturedHeaderPageControl.swift */,
 				039610092B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.swift */,
-				0396100A2B2DCA610097FCE5 /* FeaturedCarouselCollectionViewCell.xib */,
 				0308033C2D64C72900421600 /* AboutCollectionViewCell.swift */,
-				0308033D2D64C72900421600 /* AboutCollectionViewCell.xib */,
 				030803402D64D1C300421600 /* KeyFactsCollectionViewCell.swift */,
-				030803412D64D1C300421600 /* KeyFactsCollectionViewCell.xib */,
 				036404C02D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift */,
-				036404C12D67AE8E003937FD /* StatusIndicatorCollectionViewCell.xib */,
 				034BEC7D2D7641300082755C /* MapCollectionViewCell.swift */,
-				034BEC7E2D7641300082755C /* MapCollectionViewCell.xib */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0363E8FA2937B7AF00B5F96C /* GraphQL */ = {
@@ -203,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				03CFCA2C29E03A9600CB9FED /* FeaturedLaunch.swift */,
+				0305B85E2D7CF43E0054E98C /* Ship.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -296,9 +323,10 @@
 			files = (
 				0308033B2D4E85FE00421600 /* DetailViewController.swift in Sources */,
 				031659C029375DD1003B48FC /* ViewController.swift in Sources */,
+				0305B8622D7DD3580054E98C /* ShipService.swift in Sources */,
 				036404C22D67AE8E003937FD /* StatusIndicatorCollectionViewCell.swift in Sources */,
 				031659DB29377F01003B48FC /* LaunchList.swift in Sources */,
-				0371E1592AC72DE900585778 /* PagingSectionFooterView.swift in Sources */,
+				0305B85F2D7CF43E0054E98C /* Ship.swift in Sources */,
 				031659D929377EEB003B48FC /* ApolloNetworkHelper.swift in Sources */,
 				037AC8482A65C30A00495F9C /* Rockets.swift in Sources */,
 				0308033E2D64C72900421600 /* AboutCollectionViewCell.swift in Sources */,
