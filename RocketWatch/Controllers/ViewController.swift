@@ -42,7 +42,6 @@ class ViewController: UIViewController {
         appDelegate.shipsViewModel.delegate = self
         appDelegate.launchViewModel.fetchLaunchList()
         appDelegate.rocketViewModel.fetchRocketList()
-        appDelegate.shipsViewModel.fetchShipsList()
     }
     
     private func registerCell(){
@@ -66,7 +65,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let videoLinkFromSelectedCell = appDelegate.launchViewModel.launchList[indexPath.section].links?.videoLink
-        let rockets = appDelegate.rocketViewModel.rocketsList
         
         let storyboard = UIStoryboard(name: "WebStoryboard", bundle: nil)
         let vc = storyboard.instantiateInitialViewController()! as WebViewController
