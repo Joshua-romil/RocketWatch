@@ -23,8 +23,10 @@ class FeaturedViewController: UIViewController{
     var pageControl: UIPageControl?
     var launchViewModel: LaunchViewModel = LaunchViewModel()
     var shipsViewModel: ShipsViewModel = ShipsViewModel()
-    var shipsWithImages: [ShipsQuery.Data.Ship] = []
+    var restShips: [Ship] = []
     var selectedDetailType: DetailType?
+    
+    let defaultImage = UIImage(systemName: "sailboat.fill")
     
     //carouselCells should be updated in the future to contain dynamic content fetched from the X API
     //so each cell displays content from SpaceX posts
@@ -59,7 +61,6 @@ class FeaturedViewController: UIViewController{
         
         shipsViewModel.delegate = self
         shipsViewModel.fetchRestShipsList()
-        shipsWithImages = appDelegate.shipsViewModel.getShipsWithImages()
         
     }
     
@@ -152,8 +153,6 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if indexPath.section == 1{
-            let rockets = appDelegate.rocketViewModel.rocketsList
-            let selectedRocket = rockets[indexPath.item]
             selectedDetailType = .rocket
             performSegue(withIdentifier: "ShowDetailSegue", sender: self)
         } else if indexPath.section == 2 {
@@ -177,7 +176,7 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         
         //Ships section
         if section == 2 {
-            return shipsWithImages.count
+            return restShips.count
         }
         
         return 4
@@ -256,11 +255,29 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
             if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell
             {
                 
-                let shipsWithImages = appDelegate.shipsViewModel.getShipsWithImages()
+                let ship = restShips[indexPath.item]
+                cell.label.text = ship.name
                 
-                cell.configureShipCollectionViewCell(item: shipsWithImages[indexPath.item])
-                cell.layer.cornerRadius = 16
-                cell.clipsToBounds = true
+                DispatchQueue.global(qos: .default).async {
+                    if ship.image == nil {
+                        DispatchQueue.main.async {
+                            cell.image.image = self.defaultImage // Sailboat for nil
+                            cell.layer.cornerRadius = 16
+                            cell.clipsToBounds = true
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let thumbnailSize = CGSize(width: 400, height: 400)
+                            cell.image.sd_setImage(
+                                with: URL(string: ship.image!),
+                                placeholderImage: self.defaultImage,
+                                context: [.imageThumbnailPixelSize: thumbnailSize]
+                            )
+                            cell.layer.cornerRadius = 16
+                            cell.clipsToBounds = true
+                        }
+                    }
+                }
                 
                 return cell
             }
@@ -298,8 +315,12 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
 extension FeaturedViewController: ShipViewModelDelegate{
     
     func didReceiveData() {
-        let restShipCount = shipsViewModel.restShipsList.count
-        print("Got \(restShipCount) ships from the REST API!")
+        
+        restShips = shipsViewModel.getRESTShips()
+                
+        DispatchQueue.main.async {
+            self.featuredCollectionView.reloadData()
+        }
     }
     
     func didFail(errorMessage: String) {
