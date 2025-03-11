@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 enum DetailType{
     case rocket
@@ -15,6 +16,8 @@ enum DetailType{
 class DetailViewController: UIViewController {
     
     var detailType: DetailType = .rocket
+    var ship: Ship?
+    let defaultImage = UIImage(systemName: "sailboat.fill")
     
     @IBOutlet weak var detailCollectionView: UICollectionView!
     
@@ -311,22 +314,33 @@ extension DetailViewController: UICollectionViewDataSource,UICollectionViewDeleg
             switch indexPath.section {
             case 0:
                 let carouselCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as! FeaturedCarouselCollectionViewCell
-                carouselCell.carouselImage.image = UIImage(named: "Falcon1")
+                
+                if let imageUrlString = ship?.image, let url = URL(string: imageUrlString){
+                    carouselCell.carouselImage.sd_setImage(with: url)
+                } else {
+                    carouselCell.carouselImage.image = defaultImage
+                }
+                
                 carouselCell.title.isHidden = true
                 carouselCell.subtitle.isHidden = true
                 return carouselCell
             case 1:
                 let statusCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "StatusIndicatorCollectionViewCell", for: indexPath) as! StatusIndicatorCollectionViewCell
+                if let ship = ship {
+                    statusCell.configure(active: ship.active)
+                } else {
+                    statusCell.configure(active: false)
+                }
+                
                 return statusCell
             case 2:
                 let keyFactsCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "KeyFactsCollectionViewCell", for: indexPath) as! KeyFactsCollectionViewCell
                 let keyFacts: [(field: String, fact: String)] = [
-                            ("First Flight", "June 4, 2010"),
-                            ("Height", "70 m"),
-                            ("Diameter", "3.7 m"),
-                            ("Mass", "549,054 kg"),
-                            ("Stages", "2"),
-                            ("Payload to LEO", "22,800 kg")
+                            ("Model", "June 4, 2010"),
+                            ("Roles", "70 m"),
+                            ("Type", "3.7 m"),
+                            ("Weight", "549,054 kg"),
+                            ("Year built", "2"),
                         ]
                 
                 keyFactsCell.configure(with: keyFacts)

@@ -13,6 +13,8 @@ class StatusIndicatorCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     
+    private var rippleLayer: CAShapeLayer?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -22,8 +24,42 @@ class StatusIndicatorCollectionViewCell: UICollectionViewCell {
         circleView.layer.cornerRadius = circleView.frame.width / 2
         circleView.clipsToBounds = false
         
-        startRippleAnimation()
-
+    }
+    
+    func configure(active: Bool){
+        
+        let activeBackgroundColor = UIColor(red: 234/255, green: 245/255, blue: 238/255, alpha: 1)
+        let activeLabelColor = UIColor(red: 85/255, green: 190/255, blue: 126/255, alpha: 1)
+        
+        let inactiveBackgroundColor = UIColor(red: 255/255, green: 233/255, blue: 233/255, alpha: 1)
+        let inactiveLabelColor = UIColor(red: 255/255, green: 97/255, blue: 97/255, alpha: 1)
+    
+        
+        if active {
+            
+            statusLabel.text = "In Service"
+            
+            statusLabel.textColor = activeLabelColor
+            circleView.backgroundColor = activeLabelColor
+            containerView.backgroundColor = activeBackgroundColor
+                        
+            if rippleLayer == nil {
+                startRippleAnimation()
+            }
+            
+        } else {
+            
+            rippleLayer?.removeFromSuperlayer()
+            rippleLayer = nil
+            
+            statusLabel.text = "Inactive"
+            
+            statusLabel.textColor = inactiveLabelColor
+            circleView.backgroundColor = inactiveLabelColor
+            containerView.backgroundColor = inactiveBackgroundColor
+            
+        }
+        
     }
     
     override func layoutSubviews() {
@@ -34,13 +70,14 @@ class StatusIndicatorCollectionViewCell: UICollectionViewCell {
     
     private func startRippleAnimation() {
         
-        let rippleLayer = CAShapeLayer()
-        rippleLayer.path = UIBezierPath(ovalIn: circleView.bounds).cgPath
-        rippleLayer.fillColor = UIColor.green.cgColor
-        rippleLayer.opacity = 0.0
-        rippleLayer.frame = circleView.bounds
+        rippleLayer = CAShapeLayer()
         
-        circleView.layer.addSublayer(rippleLayer)
+        rippleLayer!.path = UIBezierPath(ovalIn: circleView.bounds).cgPath
+        rippleLayer!.fillColor = UIColor.green.cgColor
+        rippleLayer!.opacity = 0.0
+        rippleLayer!.frame = circleView.bounds
+        
+        circleView.layer.addSublayer(rippleLayer!)
         
         let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnimation.fromValue = 1.0
@@ -58,7 +95,7 @@ class StatusIndicatorCollectionViewCell: UICollectionViewCell {
         animationGroup.repeatCount = Float.infinity
         animationGroup.timingFunction = CAMediaTimingFunction(name: .easeOut)
         
-        rippleLayer.add(animationGroup, forKey: "rippleEffect")
+        rippleLayer!.add(animationGroup, forKey: "rippleEffect")
     }
 
 }
