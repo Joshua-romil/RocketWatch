@@ -24,6 +24,7 @@ class FeaturedViewController: UIViewController{
     var launchViewModel: LaunchViewModel = LaunchViewModel()
     var shipsViewModel: ShipsViewModel = ShipsViewModel()
     var restShips: [Ship] = []
+    var selectedShip: Ship?
     var selectedDetailType: DetailType?
     
     let defaultImage = UIImage(systemName: "sailboat.fill")
@@ -138,8 +139,10 @@ class FeaturedViewController: UIViewController{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailSegue"{
+            
             if let detailVC = segue.destination as? DetailViewController{
                 detailVC.detailType = selectedDetailType ?? .rocket
+                detailVC.ship = selectedShip
             }
         }
     }
@@ -157,6 +160,7 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
             performSegue(withIdentifier: "ShowDetailSegue", sender: self)
         } else if indexPath.section == 2 {
             selectedDetailType = .ship
+            selectedShip = restShips[indexPath.item]
             performSegue(withIdentifier: "ShowDetailSegue", sender: self)
         }
         
