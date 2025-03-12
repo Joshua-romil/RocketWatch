@@ -335,15 +335,43 @@ extension DetailViewController: UICollectionViewDataSource,UICollectionViewDeleg
                 return statusCell
             case 2:
                 let keyFactsCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "KeyFactsCollectionViewCell", for: indexPath) as! KeyFactsCollectionViewCell
-                let keyFacts: [(field: String, fact: String)] = [
-                            ("Model", "June 4, 2010"),
-                            ("Roles", "70 m"),
-                            ("Type", "3.7 m"),
-                            ("Weight", "549,054 kg"),
-                            ("Year built", "2"),
-                        ]
                 
-                keyFactsCell.configure(with: keyFacts)
+                if let ship = ship {
+                    
+                    let weightString: String
+                    
+                    switch (ship.massKg, ship.massLbs) {
+                        
+                        case (let kg?, let lbs?): weightString = "\(kg)kg / \(lbs)lb"
+                        case (let kg?, nil): weightString = "\(kg)kg"
+                        case (nil, let lbs?): weightString = "\(lbs)lb"
+                        case (nil, nil): weightString = "Unknown"
+                        
+                    }
+                    
+                    let keyFacts: [(field: String, fact: String)] = [
+                        ("Home Port", ship.homePort.rawValue),
+                                ("Roles", ship.roles.map { $0.rawValue }.joined(separator: ", ")),
+                                ("Type", ship.type.rawValue),
+                                ("Weight", weightString),
+                                ("Year Built", ship.yearBuilt.map { String($0) } ?? "Unknown")
+                    ]
+                    
+                    keyFactsCell.configure(with: keyFacts)
+                    
+                } else {
+                    
+                    let keyFacts: [(field: String, fact: String)] = [
+                        ("Home Port", "Unknown"),
+                        ("Roles", "None"),
+                        ("Type", "Unknown"),
+                        ("Weight", "Unknown"),
+                        ("Year Built", "Unknown"),
+                    ]
+                    
+                    keyFactsCell.configure(with: keyFacts)
+                    
+                }
                 
                 return keyFactsCell
             case 3:
