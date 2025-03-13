@@ -44,10 +44,9 @@ class MapCollectionViewCell: UICollectionViewCell, MKMapViewDelegate {
     
 
     func addShipAnnotation(coordinate: CLLocationCoordinate2D, region: MKCoordinateRegion) {
-        let portAnnotation = CustomAnnotation(coordinate: coordinate, title: "Ship", subtitle: "Current ship position")
         
-        mapView.setRegion(region, animated: true)
-        mapView.addAnnotation(portAnnotation)
+        
+        
     }
     
     
@@ -76,4 +75,35 @@ class MapCollectionViewCell: UICollectionViewCell, MKMapViewDelegate {
         
     }
 
+    
+    func configure(with coordinates: CLLocationCoordinate2D?, homePort: HomePort) {
+        
+        var finalCoordinates = CLLocationCoordinate2D()
+        
+        if coordinates == nil {
+            switch homePort {
+            case .fortLauderdale:
+                finalCoordinates = CLLocationCoordinate2D(latitude: 26.092163, longitude: -80.120157)
+            case .portCanaveral:
+                finalCoordinates = CLLocationCoordinate2D(latitude: 28.415151, longitude: -80.630438)
+            case .portOfLosAngeles:
+                finalCoordinates = CLLocationCoordinate2D(latitude: 33.736717, longitude: -118.265098)
+            }
+            
+            let region = MKCoordinateRegion(center: finalCoordinates, latitudinalMeters: 8000, longitudinalMeters: 8000)
+            let portAnnotation = CustomAnnotation(coordinate: finalCoordinates, title: "Port", subtitle: "Port location")
+            mapView.setRegion(region, animated: true)
+            mapView.addAnnotation(portAnnotation)
+            
+        } else {
+            
+            let region = MKCoordinateRegion(center: coordinates!, latitudinalMeters: 8000, longitudinalMeters: 8000)
+            let portAnnotation = CustomAnnotation(coordinate: coordinates!, title: "Ship", subtitle: "Ship position")
+            mapView.setRegion(region, animated: true)
+            mapView.addAnnotation(portAnnotation)
+            
+        }
+        
+    }
+    
 }

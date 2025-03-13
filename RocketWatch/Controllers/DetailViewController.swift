@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import MapKit
 
 enum DetailType{
     case rocket
@@ -375,8 +376,19 @@ extension DetailViewController: UICollectionViewDataSource,UICollectionViewDeleg
                 
                 return keyFactsCell
             case 3:
+                
                 let mapCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "MapCollectionViewCell", for: indexPath) as! MapCollectionViewCell
+                if let ship = ship {
+                    let coordinates: CLLocationCoordinate2D? = (ship.latitude != nil && ship.longitude != nil) ?
+                            CLLocationCoordinate2D(latitude: ship.latitude!, longitude: ship.longitude!) :
+                            nil
+                    mapCell.configure(with: coordinates, homePort: ship.homePort)
+                } else {
+                    mapCell.configure(with: nil, homePort: .portCanaveral)
+                }
+                
                 return mapCell
+                
             default:
                 let fallbackCell = UICollectionViewCell()
                 return fallbackCell
