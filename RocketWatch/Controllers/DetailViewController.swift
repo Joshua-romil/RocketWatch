@@ -34,7 +34,6 @@ class DetailViewController: UIViewController {
         
         detailCollectionView.collectionViewLayout = createLayout()
         
-        self.navigationItem.title = "Falcon 9"
         self.navigationItem.backButtonTitle = "Back"
         
         registerCarouselCell()
@@ -47,10 +46,10 @@ class DetailViewController: UIViewController {
         detailCollectionView.dataSource = self
         detailCollectionView.delegate = self
         
-        print("Vilket cell typ har användare klickat på?: \(detailType)")
-        
         if detailType == .ship{
-            //TODO: Hide sections from the detailview that you don't want for ships
+            self.navigationItem.title = ship?.name ?? "Information"
+        } else {
+            self.navigationItem.title = "Falcon 9"
         }
         
     }
