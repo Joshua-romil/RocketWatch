@@ -39,7 +39,6 @@ class ViewController: UIViewController {
         
         appDelegate.launchViewModel.delegate = self
         appDelegate.rocketViewModel.delegate = self
-        appDelegate.shipsViewModel.delegate = self
         appDelegate.launchViewModel.fetchLaunchList()
         appDelegate.rocketViewModel.fetchRocketList()
     }
@@ -90,7 +89,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
 }
 
 //Delegate for LaunchViewModel and ShipViewModel
-extension ViewController: LaunchViewModelDelegate,ShipViewModelDelegate{
+extension ViewController: LaunchViewModelDelegate{
     
     func didReceiveData() {
         self.loadingView.isHidden = true

@@ -26,6 +26,9 @@
 		031659D929377EEB003B48FC /* ApolloNetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031659D829377EEB003B48FC /* ApolloNetworkHelper.swift */; };
 		031659DB29377F01003B48FC /* LaunchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031659DA29377F01003B48FC /* LaunchList.swift */; };
 		031659DD29377F2E003B48FC /* LaunchList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 031659DC29377F2E003B48FC /* LaunchList.graphql */; };
+		0325D49A2D8AFD8800754467 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325D4992D8AFD8800754467 /* Rocket.swift */; };
+		0325D49C2D8B047000754467 /* RocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325D49B2D8B047000754467 /* RocketService.swift */; };
+		0325D49E2D8B06C800754467 /* RocketsViewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0325D49D2D8B06C800754467 /* RocketsViewsModel.swift */; };
 		032C72AF2969A38500E517FC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032C72AE2969A38500E517FC /* SplashViewController.swift */; };
 		03480EC32B3113AE00C7F77F /* Ships.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03480EC22B3113AE00C7F77F /* Ships.swift */; };
 		03480EC52B3116AC00C7F77F /* Ships.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 03480EC42B3116AC00C7F77F /* Ships.graphql */; };
@@ -75,6 +78,9 @@
 		031659D829377EEB003B48FC /* ApolloNetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApolloNetworkHelper.swift; sourceTree = "<group>"; };
 		031659DA29377F01003B48FC /* LaunchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchList.swift; sourceTree = "<group>"; };
 		031659DC29377F2E003B48FC /* LaunchList.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LaunchList.graphql; sourceTree = "<group>"; };
+		0325D4992D8AFD8800754467 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
+		0325D49B2D8B047000754467 /* RocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketService.swift; sourceTree = "<group>"; };
+		0325D49D2D8B06C800754467 /* RocketsViewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketsViewsModel.swift; sourceTree = "<group>"; };
 		032C72AE2969A38500E517FC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		03480EC22B3113AE00C7F77F /* Ships.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ships.swift; sourceTree = "<group>"; };
 		03480EC42B3116AC00C7F77F /* Ships.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Ships.graphql; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				0305B8612D7DD3580054E98C /* ShipService.swift */,
+				0325D49B2D8B047000754467 /* RocketService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -189,6 +196,7 @@
 				031659CF29377DEB003B48FC /* LaunchViewModel.swift */,
 				037AC8492A65C84A00495F9C /* RocketsLaunchViewModel.swift */,
 				0396100D2B2DF26E0097FCE5 /* ShipsViewModel.swift */,
+				0325D49D2D8B06C800754467 /* RocketsViewsModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -230,6 +238,7 @@
 			children = (
 				03CFCA2C29E03A9600CB9FED /* FeaturedLaunch.swift */,
 				0305B85E2D7CF43E0054E98C /* Ship.swift */,
+				0325D4992D8AFD8800754467 /* Rocket.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -330,6 +339,7 @@
 				031659D929377EEB003B48FC /* ApolloNetworkHelper.swift in Sources */,
 				037AC8482A65C30A00495F9C /* Rockets.swift in Sources */,
 				0308033E2D64C72900421600 /* AboutCollectionViewCell.swift in Sources */,
+				0325D49E2D8B06C800754467 /* RocketsViewsModel.swift in Sources */,
 				0396100E2B2DF26E0097FCE5 /* ShipsViewModel.swift in Sources */,
 				032C72AF2969A38500E517FC /* SplashViewController.swift in Sources */,
 				03CFCA2829E0386000CB9FED /* FeaturedLaunchesHeaderView.swift in Sources */,
@@ -339,6 +349,8 @@
 				031659D529377E74003B48FC /* LaunchTableViewCell.swift in Sources */,
 				034BEC7F2D7641300082755C /* MapCollectionViewCell.swift in Sources */,
 				031659BC29375DD1003B48FC /* AppDelegate.swift in Sources */,
+				0325D49A2D8AFD8800754467 /* Rocket.swift in Sources */,
+				0325D49C2D8B047000754467 /* RocketService.swift in Sources */,
 				0371E15B2AC87C4A00585778 /* FeaturedHeaderPageControl.swift in Sources */,
 				031659BE29375DD1003B48FC /* SceneDelegate.swift in Sources */,
 				031659D029377DEB003B48FC /* LaunchViewModel.swift in Sources */,

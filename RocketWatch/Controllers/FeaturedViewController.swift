@@ -23,7 +23,10 @@ class FeaturedViewController: UIViewController{
     var pageControl: UIPageControl?
     var launchViewModel: LaunchViewModel = LaunchViewModel()
     var shipsViewModel: ShipsViewModel = ShipsViewModel()
-    var restShips: [Ship] = []
+    var rocketsViewModel: RocketsViewModel = RocketsViewModel()
+    var ships: [Ship] = []
+    var rockets: [Rocket] = []
+    var selectedRocket: Rocket?
     var selectedShip: Ship?
     var selectedDetailType: DetailType?
     
@@ -60,8 +63,11 @@ class FeaturedViewController: UIViewController{
         featuredCollectionView.dataSource = self
         featuredCollectionView.delegate = self
         
+        rocketsViewModel.delegate = self
+        rocketsViewModel.fetchRockets()
+        
         shipsViewModel.delegate = self
-        shipsViewModel.fetchRestShipsList()
+        shipsViewModel.fetchShips()
         
     }
     
@@ -143,6 +149,7 @@ class FeaturedViewController: UIViewController{
             if let detailVC = segue.destination as? DetailViewController{
                 detailVC.detailType = selectedDetailType ?? .rocket
                 detailVC.ship = selectedShip
+                detailVC.rocket = selectedRocket
             }
         }
     }
@@ -157,10 +164,11 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         
         if indexPath.section == 1{
             selectedDetailType = .rocket
+            selectedRocket = rockets[indexPath.item]
             performSegue(withIdentifier: "ShowDetailSegue", sender: self)
         } else if indexPath.section == 2 {
             selectedDetailType = .ship
-            selectedShip = restShips[indexPath.item]
+            selectedShip = ships[indexPath.item]
             performSegue(withIdentifier: "ShowDetailSegue", sender: self)
         }
         
@@ -175,12 +183,12 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
         
         //Rockets section
         if section == 1 {
-            return 4 //The current number of rockets spacex has, should be updated to dynamic code instead
+            return rockets.count
         }
         
         //Ships section
         if section == 2 {
-            return restShips.count
+            return ships.count
         }
         
         return 4
@@ -224,8 +232,7 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
             if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell
             {
                 
-                let rockets = appDelegate.rocketViewModel.rocketsList
-                let rocketName = rockets[indexPath.item].name
+                let rocket = rockets[indexPath.item]
                 
                 let featuredHeaderSubtitle: UILabel = UILabel(frame: cell.frame)
                 
@@ -235,21 +242,8 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
                 cell.layer.cornerRadius = 16
                 cell.clipsToBounds = true
                 
-                cell.label.text = rocketName
-                
-                switch rocketName 
-                {
-                case "Falcon 1":
-                    cell.image.image = UIImage(named: "Falcon1")
-                case "Falcon 9":
-                    cell.image.image = UIImage(named: "Falcon9")
-                case "Falcon Heavy":
-                    cell.image.image = UIImage(named: "FalconHeavy")
-                case "Starship":
-                    cell.image.image = UIImage(named: "Starship")
-                default:
-                    cell.image.sd_setImage(with: URL(string: ""), placeholderImage: UIImage(systemName: "sparkle"))
-                }
+                cell.label.text = rocket.name
+                cell.image.sd_setImage(with: URL(string: rocket.flickrImages[0]))
                 
                 return cell
             }
@@ -259,7 +253,7 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
             if let cell = featuredCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCollectionViewCell", for: indexPath) as? FeaturedCollectionViewCell
             {
                 
-                let ship = restShips[indexPath.item]
+                let ship = ships[indexPath.item]
                 cell.label.text = ship.name
                 
                 DispatchQueue.global(qos: .default).async {
@@ -316,19 +310,29 @@ extension FeaturedViewController: UICollectionViewDataSource,UICollectionViewDel
     }
 }
 
-extension FeaturedViewController: ShipViewModelDelegate{
+extension FeaturedViewController: ShipViewModelDelegate, RocketViewModelDelegate{
     
-    func didReceiveData() {
+    func didReceiveRocketData() {
+        rockets = rocketsViewModel.getRockets()
+    }
+    
+    func didFailWithRocketError(errorMessage: String) {
+        print("REST API Error: \(errorMessage)")
+    }
+    
+    
+    func didReceiveShipData() {
         
-        restShips = shipsViewModel.getRESTShips()
+        ships = shipsViewModel.getShips()
                 
         DispatchQueue.main.async {
             self.featuredCollectionView.reloadData()
         }
     }
     
-    func didFail(errorMessage: String) {
+    func didFailWithShipError(errorMessage: String) {
         print("REST API Error: \(errorMessage)")
     }
     
 }
+
