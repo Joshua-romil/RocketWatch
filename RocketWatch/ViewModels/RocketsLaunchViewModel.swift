@@ -9,7 +9,7 @@ import Foundation
 import Apollo
 
 
-class RocketsViewModel{
+class RocketsLaunchViewModel{
     var rocketsList = [RocketsQuery.Data.Rocket]()
     weak var delegate: LaunchViewModelDelegate?
     

@@ -9,16 +9,15 @@ import Foundation
 
 protocol ShipViewModelDelegate: AnyObject{
     
-    func didReceiveData()
-    func didFail(errorMessage: String)
+    func didReceiveShipData()
+    func didFailWithShipError(errorMessage: String)
     
 }
 
 
 class ShipsViewModel{
     
-    var shipsList = [ShipsQuery.Data.Ship]() //GraphQL ships (based on a different API)
-    var restShipsList = [Ship]() //REST ships
+    var ships = [Ship]() //REST ships
     
     weak var delegate: ShipViewModelDelegate?
     
@@ -28,21 +27,21 @@ class ShipsViewModel{
         self.shipService = shipService
     }
 
-    func fetchRestShipsList(){
-        restShipsList.removeAll()
+    func fetchShips(){
+        ships.removeAll()
         Task {
             do {
                 let ships = try await shipService.getShips()
-                self.restShipsList = ships
-                self.delegate?.didReceiveData()
+                self.ships = ships
+                self.delegate?.didReceiveShipData()
             } catch {
-                self.delegate?.didFail(errorMessage: error.localizedDescription)
+                self.delegate?.didFailWithShipError(errorMessage: error.localizedDescription)
             }
         }
     }
         
-    func getRESTShips() -> [Ship] {
-        restShipsList
+    func getShips() -> [Ship] {
+        ships
     }
     
 }

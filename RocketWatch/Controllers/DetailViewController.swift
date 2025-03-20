@@ -18,6 +18,7 @@ class DetailViewController: UIViewController {
     
     var detailType: DetailType = .rocket
     var ship: Ship?
+    var rocket: Rocket?
     let defaultImage = UIImage(systemName: "sailboat.fill")
     
     @IBOutlet weak var detailCollectionView: UICollectionView!
@@ -48,8 +49,10 @@ class DetailViewController: UIViewController {
         
         if detailType == .ship{
             self.navigationItem.title = ship?.name ?? "Information"
+        } else if detailType == .rocket {
+            self.navigationItem.title = rocket?.name
         } else {
-            self.navigationItem.title = "Falcon 9"
+            self.navigationItem.title = "Information"
         }
         
     }
@@ -101,7 +104,7 @@ class DetailViewController: UIViewController {
             case 1: return 1 // Status indicator
             case 2: return 1 // About
             case 3: return 1 // Key Facts
-            case 4: return 4 // However many pictures you have
+            case 4: return (rocket?.flickrImages.count)! // This section only applies to rockets
             case 5: return 1 // Map
             default: return 0
         }
@@ -268,36 +271,76 @@ extension DetailViewController: UICollectionViewDataSource,UICollectionViewDeleg
             switch indexPath.section {
             case 0:
                 let carouselCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as! FeaturedCarouselCollectionViewCell
-                carouselCell.carouselImage.image = UIImage(named: "Falcon1")
+                if let imageUrlString = rocket?.flickrImages[0], let url = URL(string: imageUrlString){
+                    carouselCell.carouselImage.sd_setImage(with: url)
+                } else {
+                    carouselCell.carouselImage.image = defaultImage
+                }
                 carouselCell.title.isHidden = true
                 carouselCell.subtitle.isHidden = true
                 return carouselCell
+                
             case 1:
                 let statusCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "StatusIndicatorCollectionViewCell", for: indexPath) as! StatusIndicatorCollectionViewCell
+                if let rocket = rocket {
+                    statusCell.configure(active: rocket.active)
+                } else {
+                    statusCell.configure(active: false)
+                }
                 return statusCell
             case 2:
                 let aboutCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "AboutCollectionViewCell", for: indexPath) as! AboutCollectionViewCell
+                aboutCell.aboutInfo.text = rocket?.description
                 return aboutCell
             case 3:
                 let keyFactsCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "KeyFactsCollectionViewCell", for: indexPath) as! KeyFactsCollectionViewCell
-                let keyFacts: [(field: String, fact: String)] = [
-                            ("First Flight", "June 4, 2010"),
-                            ("Height", "70 m"),
-                            ("Diameter", "3.7 m"),
-                            ("Mass", "549,054 kg"),
-                            ("Stages", "2"),
-                            ("Payload to LEO", "22,800 kg")
-                        ]
                 
-                keyFactsCell.configure(with: keyFacts)
+                if let rocket = rocket {
+                    
+                    let keyFacts: [(field: String, fact: String)] = [
+                        ("First Flight", rocket.firstFlight),
+                        ("Height", "\(rocket.height.meters ?? 0) m / \(rocket.height.feet ?? 0) ft"),
+                        ("Diameter", "\(rocket.diameter.meters ?? 0) m / \(rocket.diameter.feet ?? 0) ft"),
+                        ("Mass", "\(rocket.mass.kg) kg / \(rocket.mass.lb) lb"),
+                        ("Cost per Launch", "$\(rocket.costPerLaunch)"),
+                        ("Country", rocket.country),
+                        ("Company", rocket.company)
+                    ]
+                    keyFactsCell.configure(with: keyFacts)
+                    
+                } else {
+                    
+                    let keyFacts: [(field: String, fact: String)] = [
+                        ("First Flight", "Unknown"),
+                        ("Height", "None"),
+                        ("Diameter", "Unknown"),
+                        ("Mass", "Unknown"),
+                        ("Cost per Launch", "Unknown"),
+                        ("Country", "Unknown"),
+                        ("Company", "Unknown"),
+                    ]
+                    
+                    keyFactsCell.configure(with: keyFacts)
+                    
+                }
                 
                 return keyFactsCell
             case 4:
                 let carouselCell = detailCollectionView.dequeueReusableCell(withReuseIdentifier: "FeaturedCarouselCollectionViewCell", for: indexPath) as! FeaturedCarouselCollectionViewCell
-                carouselCell.carouselImage.image = UIImage(named: "Falcon1")
+                
                 carouselCell.title.isHidden = true
                 carouselCell.subtitle.isHidden = true
                 carouselCell.layer.cornerRadius = 8
+                
+                
+                if let rocket = rocket {
+                    
+                    carouselCell.carouselImage.sd_setImage(with: URL(string: rocket.flickrImages[indexPath.item]))
+                    
+                } else {
+                    carouselCell.carouselImage.image = defaultImage
+                }
+                
                 return carouselCell
             default:
                 //this will be replaced anyway
